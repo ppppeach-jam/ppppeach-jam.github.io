@@ -29,7 +29,27 @@
       font-size: 0.9em;
     }
     html {
-  scroll-behavior: smooth;
+      scroll-behavior: smooth;
+    }
+    .peach-jam {
+      display: inline-block;
+      animation: peachSwing 1.6s ease-in-out infinite, glow 3s ease-in-out infinite;
+      background: linear-gradient(45deg, #ffd6df, #ffeef1, #ffd6df);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    @keyframes peachSwing {
+      0%, 100% { transform: rotate(0deg); }
+      25%      { transform: rotate(5deg); }
+      75%      { transform: rotate(-5deg); }
+    }
+    
+    @keyframes glow {
+      0%   { background-position: 0% center; }
+      50%  { background-position: 100% center; }
+      100% { background-position: 0% center; }
     }
   </style>
 
@@ -44,7 +64,7 @@
 
 <!-- ナビゲーションバー -->
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #d88fa2;">
-  <a class="navbar-brand" href="#">🍑 Hinako Mitsuoka</a>
+  <a class="navbar-brand peach-jam" href="#">🍑 Hinako Mitsuoka</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
     <span class="navbar-toggler-icon"></span>
   </button>
