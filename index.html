@@ -6,33 +6,59 @@
   <title>peach jam のポートフォリオ</title>
   <style>
     body {
+      margin: 0;
       font-family: 'Hiragino Maru Gothic ProN', sans-serif;
       background-color: #fff0f5;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
+      padding-top: 60px; /* 固定バーの高さ分だけ余白を空ける */
     }
-    header, section, footer {
-      padding: 2em;
+
+    /* ナビゲーションバー */
+    nav {
+      background-color: #e75480; /* 濃いピンク（ローズ系） */
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 0.75;
+    }
+
+    header, section {
       max-width: 800px;
       margin: auto;
+      padding: 2em;
     }
+
     h1 {
-      font-size: 2.2em;
       color: #d87093;
-    }
-    a {
-      color: #ff69b4;
     }
   </style>
 </head>
 <body>
 
-<nav style="background-color:#fff0f5; padding: 1em; text-align: center;">
-  <a href="index.html" style="margin: 1em; font-weight: bold; color: #d87093;">Home</a>
-  <a href="publications.html" style="margin: 1em; font-weight: bold; color: #d87093;">Publications</a>
-  <a href="achievements.html" style="margin: 1em; font-weight: bold; color: #d87093;">Achievement</a>
+<!-- 上部ナビゲーションバー -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="achievements.html">Achievements</a>
+  <a href="publications.html">Publications</a>
 </nav>
 
 <header>
