@@ -1,1 +1,123 @@
-a
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>光岡日菜子 / Hinako Mitsuoka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 70px;
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #fdf6f9;
+    }
+    h1 {
+      color: #b65775;
+    }
+    h2 {
+      border-bottom: 2px solid #f8a3c4;
+      padding-bottom: 0.3em;
+      margin-top: 2em;
+      color: #b65775;
+    }
+    footer {
+      background: #fce4ec;
+      padding: 1em;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    html {
+    scroll-behavior: smooth;
+    }
+    .peach-jam {
+      display: inline-block;
+      animation: peachSwing 1.6s ease-in-out infinite;
+    }
+    
+    @keyframes peachSwing {
+      0%, 100% { transform: rotate(0deg); }
+      25%      { transform: rotate(5deg); }
+      75%      { transform: rotate(-5deg); }
+    }
+  </style>
+
+  <!-- Bootstrap JS & dependencies -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<a id="top" style="position: relative; top: -70px;"></a>
+
+
+<!-- ナビゲーションバー -->
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #d88fa2;">
+  <a class="navbar-brand" href="#">
+    <span class="peach-jam">🍑</span> Hinako Mitsuoka
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="achievements.html">Achievements</a></li>
+      <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+      <li class="nav-item"><a class="nav-link" href="products.html">Works</a></li>
+    </ul>
+
+    <!-- アイコンリンク -->
+    <a href="https://nagoyacv.connpass.com/" target="_blank" class="ml-3">
+      <img src="Image/connpass.png" width="24" height="24" alt="Connpass">
+    </a>
+    <a href="https://x.com/ramentabetai__1" target="_blank" class="ml-2">
+      <img src="Image/x.png" width="24" height="24" alt="X">
+    </a>
+    <a href="https://scholar.google.com/citations?user=SODa45gAAAAJ&hl=en" target="_blank" class="ml-2">
+      <img src="Image/scholar.png" width="24" height="24" alt="Google Scholar">
+    </a>
+    <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank" class="ml-2">
+      <img src="Image/Lab.png" width="24" height="24" alt="Lab Website">
+    </a>
+  </div>
+</nav>
+  
+<!-- メインコンテンツ -->
+<main class="container">
+  <h1>Works / 制作物</h1>
+
+
+  <h2>🔧 Products / 製作物</h2>
+  <div class="mb-4">
+  <ul>
+    <li>
+      <b>超kAI像</b>（iOSアプリ）<br>
+      <!-- 画像を表示 -->
+      <img src="Image/choukaizou_icon.png" alt="超kAI像アプリ画像" width="200"><br>
+      AI超解像で写真を最大4倍に高精細化します。細部までくっきり、自然な仕上がりです！<br>
+      フォルダで賢く分類し、写真ごとにメモを保存できます。<br>
+      公開URL：<a href="https://apps.apple.com/jp/app/%E8%B6%85kai%E8%94%B5/id6751739848" target="_blank">App Store</a>
+    </li>
+    <li>
+      <b>kikonAshI</b>（iOSアプリ）<br>
+      <!-- 画像を表示 -->
+      <img src="Image/kikonashi_icon.png" alt="kikonAshIアプリ画像" width="200"><br>
+      ファッションに特化したAIを独自開発。iPhoneで撮影した洋服の画像をもとに、最適なコーディネートをAIが提案。<br>
+      コーディネートのおしゃれ度も測定してくれる、日常に寄り添うアシスタントアプリです。<br>
+      公開URL：<a href="https://apps.apple.com/us/app/kikonashi/id6502258139" target="_blank">App Store</a>
+    </li>
+  </ul>
+</div>
+</main>
+
+<!-- フッター -->
+<footer class="page-footer bg-light border text-center py-3">
+  <a href="#top">▲ 一番上に戻る</a><br>
+  © 2025 Hinako Mitsuoka 🍑
+</footer>
+
+</body>
+</html>
