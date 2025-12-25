@@ -2,10 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>光岡日菜子 / Hinako Mitsuoka</title>
+  <title>Achievements / 光岡日菜子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
     body {
@@ -15,12 +14,14 @@
     }
     h1 {
       color: #b65775;
+      font-size: 2rem;
     }
     h2 {
       border-bottom: 2px solid #f8a3c4;
       padding-bottom: 0.3em;
       margin-top: 2em;
       color: #b65775;
+      font-size: 1.5rem;
     }
     footer {
       background: #fce4ec;
@@ -29,7 +30,7 @@
       font-size: 0.9em;
     }
     html {
-    scroll-behavior: smooth;
+      scroll-behavior: smooth;
     }
     .peach-jam {
       display: inline-block;
@@ -41,9 +42,32 @@
       25%      { transform: rotate(5deg); }
       75%      { transform: rotate(-5deg); }
     }
+
+    /* 言語切り替え用のスタイル */
+    .lang-en {
+      display: none;
+    }
+    /* 言語切り替えボタンの見た目 */
+    .lang-switch-btn {
+        cursor: pointer;
+        color: white !important;
+        font-weight: bold;
+        border: 1px solid white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    .lang-switch-btn:hover {
+        background-color: rgba(255,255,255,0.2);
+        text-decoration: none;
+    }
+    
+    /* リストの間隔調整 */
+    ul li {
+        margin-bottom: 0.5em;
+    }
   </style>
 
-  <!-- Bootstrap JS & dependencies -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -52,45 +76,55 @@
 <a id="top" style="position: relative; top: -70px;"></a>
 
 
-<!-- ナビゲーションバー -->
-<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #d88fa2;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #d88fa2;">
   <a class="navbar-brand" href="#">
     <span class="peach-jam">🍑</span> Hinako Mitsuoka
   </a>
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto align-items-center">
       <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="achievements.html">Achievements</a></li>
       <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
       <li class="nav-item"><a class="nav-link" href="products.html">Works</a></li>
-    </ul>
+      
+      <li class="nav-item">
+        <span class="nav-link lang-switch-btn" onclick="toggleLanguage()">JP / EN</span>
+      </li>
 
-    <!-- アイコンリンク -->
-    <a href="https://nagoyacv.connpass.com/" target="_blank" class="ml-3">
-      <img src="Image/connpass.png" width="24" height="24" alt="Connpass">
-    </a>
-    <a href="https://x.com/ramentabetai__1" target="_blank" class="ml-2">
-      <img src="Image/x.png" width="24" height="24" alt="X">
-    </a>
-    <a href="https://scholar.google.com/citations?user=SODa45gAAAAJ&hl=en" target="_blank" class="ml-2">
-      <img src="Image/scholar.png" width="24" height="24" alt="Google Scholar">
-    </a>
-    <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank" class="ml-2">
-      <img src="Image/Lab.png" width="24" height="24" alt="Lab Website">
-    </a>
+      <li class="nav-item d-flex mt-2 mt-lg-0 ml-lg-3">
+          <a href="https://nagoyacv.connpass.com/" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/connpass.png" width="24" height="24" alt="Connpass">
+          </a>
+          <a href="https://x.com/ramentabetai__1" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/x.png" width="24" height="24" alt="X">
+          </a>
+          <a href="https://scholar.google.com/citations?user=SODa45gAAAAJ&hl=en" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/scholar.png" width="24" height="24" alt="Google Scholar">
+          </a>
+          <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank">
+            <img src="Image/Lab.png" width="24" height="24" alt="Lab Website">
+          </a>
+      </li>
+    </ul>
   </div>
 </nav>
   
-<!-- メインコンテンツ -->
 <main class="container">
-  <h1>Achievements / 表彰等</h1>
+  <h1>
+    <span class="lang-ja">Achievements / 表彰等</span>
+    <span class="lang-en">Achievements</span>
+  </h1>
 
-  <h2>🏅 Awards / 表彰歴</h2>
-  <h5 class="mt-4">2025年度</h5>
+  <h2>
+      <span class="lang-ja">🏅 Awards / 表彰歴</span>
+      <span class="lang-en">🏅 Awards</span>
+  </h2>
+  <h5 class="mt-4">2025</h5>
 <ul>
   <li>
     Hack U 名城大学 2025 Happy Hacking賞（2025年12月）<br>
@@ -110,7 +144,7 @@
     URL：<a href="https://www.ieice.org/tokai/student/student-shorei/" target="_blank">https://www.ieice.org/tokai/student/student-shorei/</a>
   </li>
 </ul>
-  <h5 class="mt-4">2024年度</h5>
+  <h5 class="mt-4">2024</h5>
 <ul>
   <li>
     IEEE名古屋支部学生奨励賞（2025年01月）<br>
@@ -123,7 +157,7 @@
   </li>
 </ul>
 
-  <h5 class="mt-4">2023年度</h5>
+  <h5 class="mt-4">2023</h5>
 <ul>
   <li>名城大学 学長表彰 3件（2024年03月）</li>
   <li>名城大学 理工学部後援会奨励賞（2024年03月）</li>
@@ -148,7 +182,7 @@
   <li>卒業論文中間発表会 優秀発表賞（2023年10月）</li>
 </ul>
   
-  <h5 class="mt-4">～2022年度</h5>
+  <h5 class="mt-4">～2022</h5>
 <ul>
   <li>名城大学 理工学部後援会奨励賞（2023年03月）</li>
   <li>
@@ -164,7 +198,10 @@
 </ul>
 
   
-  <h2>🎓 Scholarships / 奨学金</h2>
+  <h2>
+      <span class="lang-ja">🎓 Scholarships / 奨学金</span>
+      <span class="lang-en">🎓 Scholarships</span>
+  </h2>
   <ul>
     <li>公益財団法人 リンナイ奨学財団 奨学助成金 採択（2024年04月～2026年03月）</li>
     <li>令和5年度 名城大学 学業優秀奨学生（2023年）</li>
@@ -173,11 +210,38 @@
 
 </main>
 
-<!-- フッター -->
 <footer class="page-footer bg-light border text-center py-3">
-  <a href="#top">▲ 一番上に戻る</a><br>
+  <a href="#top">▲ <span class="lang-ja">一番上に戻る</span><span class="lang-en">Top</span></a><br>
   © 2025 Hinako Mitsuoka 🍑
 </footer>
+
+<script>
+    // 設定を読み込む
+    let currentLang = localStorage.getItem('siteLang') || 'ja';
+
+    document.addEventListener("DOMContentLoaded", function() {
+        applyLanguage(currentLang);
+    });
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'ja') ? 'en' : 'ja';
+        applyLanguage(currentLang);
+        localStorage.setItem('siteLang', currentLang);
+    }
+
+    function applyLanguage(lang) {
+        var jaElements = document.getElementsByClassName('lang-ja');
+        var enElements = document.getElementsByClassName('lang-en');
+
+        if (lang === 'ja') {
+            for (var i = 0; i < jaElements.length; i++) jaElements[i].style.display = 'inline'; /* 見出し用調整 */
+            for (var i = 0; i < enElements.length; i++) enElements[i].style.display = 'none';
+        } else {
+            for (var i = 0; i < jaElements.length; i++) jaElements[i].style.display = 'none';
+            for (var i = 0; i < enElements.length; i++) enElements[i].style.display = 'inline';
+        }
+    }
+</script>
 
 </body>
 </html>
