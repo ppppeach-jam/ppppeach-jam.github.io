@@ -2,10 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>光岡日菜子 / Hinako Mitsuoka</title>
+  <title>Publications / 光岡日菜子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
     body {
@@ -15,12 +14,14 @@
     }
     h1 {
       color: #b65775;
+      font-size: 2rem;
     }
     h2 {
       border-bottom: 2px solid #f8a3c4;
       padding-bottom: 0.3em;
       margin-top: 2em;
       color: #b65775;
+      font-size: 1.5rem;
     }
     footer {
       background: #fce4ec;
@@ -29,7 +30,7 @@
       font-size: 0.9em;
     }
     html {
-    scroll-behavior: smooth;
+      scroll-behavior: smooth;
     }
     .peach-jam {
       display: inline-block;
@@ -41,9 +42,32 @@
       25%      { transform: rotate(5deg); }
       75%      { transform: rotate(-5deg); }
     }
+
+    /* 言語切り替え用のスタイル */
+    .lang-en {
+      display: none;
+    }
+    /* 言語切り替えボタンの見た目 */
+    .lang-switch-btn {
+        cursor: pointer;
+        color: white !important;
+        font-weight: bold;
+        border: 1px solid white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    .lang-switch-btn:hover {
+        background-color: rgba(255,255,255,0.2);
+        text-decoration: none;
+    }
+    
+    /* 論文リストの余白調整 */
+    ol li {
+        margin-bottom: 0.8em;
+    }
   </style>
 
-  <!-- Bootstrap JS & dependencies -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -51,56 +75,69 @@
 <body>
 <a id="top" style="position: relative; top: -70px;"></a>
 
-<!-- ナビゲーションバー -->
-<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #d88fa2;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #d88fa2;">
   <a class="navbar-brand" href="#">
     <span class="peach-jam">🍑</span> Hinako Mitsuoka
   </a>
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto align-items-center">
       <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="achievements.html">Achievements</a></li>
       <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
       <li class="nav-item"><a class="nav-link" href="products.html">Works</a></li>
-    </ul>
+      
+      <li class="nav-item">
+        <span class="nav-link lang-switch-btn" onclick="toggleLanguage()">JP / EN</span>
+      </li>
 
-    <!-- アイコンリンク -->
-    <a href="https://nagoyacv.connpass.com/" target="_blank" class="ml-3">
-      <img src="Image/connpass.png" width="24" height="24" alt="Connpass">
-    </a>
-    <a href="https://x.com/ramentabetai__1" target="_blank" class="ml-2">
-      <img src="Image/x.png" width="24" height="24" alt="X">
-    </a>
-    <a href="https://scholar.google.com/citations?user=SODa45gAAAAJ&hl=en" target="_blank" class="ml-2">
-      <img src="Image/scholar.png" width="24" height="24" alt="Google Scholar">
-    </a>
-    <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank" class="ml-2">
-      <img src="Image/Lab.png" width="24" height="24" alt="Lab Website">
-    </a>
+      <li class="nav-item d-flex mt-2 mt-lg-0 ml-lg-3">
+          <a href="https://nagoyacv.connpass.com/" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/connpass.png" width="24" height="24" alt="Connpass">
+          </a>
+          <a href="https://x.com/ramentabetai__1" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/x.png" width="24" height="24" alt="X">
+          </a>
+          <a href="https://scholar.google.com/citations?user=SODa45gAAAAJ&hl=en" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/scholar.png" width="24" height="24" alt="Google Scholar">
+          </a>
+          <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank">
+            <img src="Image/Lab.png" width="24" height="24" alt="Lab Website">
+          </a>
+      </li>
+    </ul>
   </div>
 </nav>
 
-<!-- メインコンテンツ -->
 <main class="container">
-  <h1>Publications / 論文一覧</h1>
+  <h1>Publications</h1>
 
-  <h2>📰 Journal・Academic Journal</h2>
+  <h2>
+      <span class="lang-ja">📰 学術論文誌</span>
+      <span class="lang-en">📰 Journal・Academic Journal</span>
+  </h2>
   <ol>
     <li><b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, "Human Brain-Inspired Network Using Transformer and Feedback Processing for Cell Image Segmentation", <i>IEEE Access</i>, 13, pp.50917-50930, 2025.(impact factor=<b>3.6</b>, acceptance rate=<b>27</b>%)<a href="https://ieeexplore.ieee.org/document/10934004" target="_blank"> paper</a></li>
   </ol>
 
-  <h2>📘 International Conferences (Full paper, Refereed)</h2>
+  <h2>
+      <span class="lang-ja">📘 国際学会 (フルペーパー査読)</span>
+      <span class="lang-en">📘 International Conferences (Full paper, Refereed)</span>
+  </h2>
   <ol>
     <li><b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, "Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation", <i>The International Conference on Computer Vision Theory and Applications (VISAPP2026) </i>, March, 2026, Barceló Marbella, Spain (Oral).
     <li><b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, "Accuracy Improvement of Cell Image Segmentation Using Feedback Former", <i>In Proceedings of the 18th European Conference on Computer Vision ECCV 2024 workshop (HCV) </i>, October, 2024, MiCo Milano, Italy (Poster).<a href="https://arxiv.org/pdf/2408.12974" target="_blank"> paper</a></li>
     <li>Sota Kato, <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, "Generalized SAM: Efficient Fine-Tuning of SAM for Variable Input Image Sizes", <i>In Proceedings of the 18th European Conference on Computer Vision ECCV 2024 workshop (CADL) </i>, October, 2024, MiCo Milano, Italy (Oral).<a href="https://arxiv.org/pdf/2408.12406.pdf" target="_blank"> paper</a></li>
   </ol>
 
-  <h2>📚 Domestic Conferences</h2>
+  <h2>
+      <span class="lang-ja">📚 国内学会・シンポジウム</span>
+      <span class="lang-en">📚 Domestic Conferences</span>
+  </h2>
   <ol>
     <li>坂井泰吾，<b><u>光岡 日菜子</u></b>, 堀田一弘, "検出・分類の二段階フレームワークによるキャベツの葉数推定～YOLOv12・ConvNeXtv2および合成データ・境界情報の活用～", ビジョン技術の実利用ワークショップ2025（ViEW2025）内：外観検査アルゴリズムコンテスト, 2025年12月, 神奈川横浜市.</li>
     <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "SAM2の効率的追加学習による医用・細胞画像セグメンテーション", ビジョン技術の実利用ワークショップ2025（ViEW2025）, 2025年12月, 神奈川横浜市.</li>
@@ -119,18 +156,49 @@
     <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "TransformerとFeedbackを用いた細胞画像セグメンテーションの精度向上", CVIM2024年5月研究会プログラム（CVIM第238回）, 2024年05月, 東京都目黒区.</li>
   </ol>
 
-  <h2>🎓 Thesis</h2>
+  <h2>
+      <span class="lang-ja">🎓 学位論文</span>
+      <span class="lang-en">🎓 Thesis</span>
+  </h2>
   <p>
-    学士論文：<br>
+    <span class="lang-ja">学士論文：</span>
+    <span class="lang-en">Bachelor's Thesis:</span><br>
     「TransformerとFeedbackを用いた細胞画像のセグメンテーション精度向上」<br>
   </p>
 </main>
 
-<!-- フッター -->
 <footer class="page-footer bg-light border text-center py-3">
-  <a href="#top">▲ 一番上に戻る</a><br>
+  <a href="#top">▲ <span class="lang-ja">一番上に戻る</span><span class="lang-en">Top</span></a><br>
   © 2025 Hinako Mitsuoka 🍑
 </footer>
+
+<script>
+    // 設定を読み込む
+    let currentLang = localStorage.getItem('siteLang') || 'ja';
+
+    document.addEventListener("DOMContentLoaded", function() {
+        applyLanguage(currentLang);
+    });
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'ja') ? 'en' : 'ja';
+        applyLanguage(currentLang);
+        localStorage.setItem('siteLang', currentLang);
+    }
+
+    function applyLanguage(lang) {
+        var jaElements = document.getElementsByClassName('lang-ja');
+        var enElements = document.getElementsByClassName('lang-en');
+
+        if (lang === 'ja') {
+            for (var i = 0; i < jaElements.length; i++) jaElements[i].style.display = 'inline'; /* 見出し用調整 */
+            for (var i = 0; i < enElements.length; i++) enElements[i].style.display = 'none';
+        } else {
+            for (var i = 0; i < jaElements.length; i++) jaElements[i].style.display = 'none';
+            for (var i = 0; i < enElements.length; i++) enElements[i].style.display = 'inline';
+        }
+    }
+</script>
 
 </body>
 </html>
