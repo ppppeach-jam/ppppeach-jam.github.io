@@ -2,10 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>光岡日菜子 / Hinako Mitsuoka</title>
+  <title>Works / 光岡日菜子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
     body {
@@ -15,12 +14,14 @@
     }
     h1 {
       color: #b65775;
+      font-size: 2rem;
     }
     h2 {
       border-bottom: 2px solid #f8a3c4;
       padding-bottom: 0.3em;
       margin-top: 2em;
       color: #b65775;
+      font-size: 1.5rem;
     }
     footer {
       background: #fce4ec;
@@ -29,7 +30,7 @@
       font-size: 0.9em;
     }
     html {
-    scroll-behavior: smooth;
+      scroll-behavior: smooth;
     }
     .peach-jam {
       display: inline-block;
@@ -41,9 +42,27 @@
       25%      { transform: rotate(5deg); }
       75%      { transform: rotate(-5deg); }
     }
+
+    /* 言語切り替え用のスタイル */
+    .lang-en {
+      display: none;
+    }
+    /* 言語切り替えボタンの見た目 */
+    .lang-switch-btn {
+        cursor: pointer;
+        color: white !important;
+        font-weight: bold;
+        border: 1px solid white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    .lang-switch-btn:hover {
+        background-color: rgba(255,255,255,0.2);
+        text-decoration: none;
+    }
   </style>
 
-  <!-- Bootstrap JS & dependencies -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -52,48 +71,56 @@
 <a id="top" style="position: relative; top: -70px;"></a>
 
 
-<!-- ナビゲーションバー -->
-<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #d88fa2;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #d88fa2;">
   <a class="navbar-brand" href="#">
     <span class="peach-jam">🍑</span> Hinako Mitsuoka
   </a>
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto align-items-center">
       <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="achievements.html">Achievements</a></li>
       <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
       <li class="nav-item"><a class="nav-link" href="products.html">Works</a></li>
-    </ul>
+      
+      <li class="nav-item">
+        <span class="nav-link lang-switch-btn" onclick="toggleLanguage()">JP / EN</span>
+      </li>
 
-    <!-- アイコンリンク -->
-    <a href="https://nagoyacv.connpass.com/" target="_blank" class="ml-3">
-      <img src="Image/connpass.png" width="24" height="24" alt="Connpass">
-    </a>
-    <a href="https://x.com/ramentabetai__1" target="_blank" class="ml-2">
-      <img src="Image/x.png" width="24" height="24" alt="X">
-    </a>
-    <a href="https://scholar.google.com/citations?user=SODa45gAAAAJ&hl=en" target="_blank" class="ml-2">
-      <img src="Image/scholar.png" width="24" height="24" alt="Google Scholar">
-    </a>
-    <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank" class="ml-2">
-      <img src="Image/Lab.png" width="24" height="24" alt="Lab Website">
-    </a>
+      <li class="nav-item d-flex mt-2 mt-lg-0 ml-lg-3">
+          <a href="https://nagoyacv.connpass.com/" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/connpass.png" width="24" height="24" alt="Connpass">
+          </a>
+          <a href="https://x.com/ramentabetai__1" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/x.png" width="24" height="24" alt="X">
+          </a>
+          <a href="https://scholar.google.com/citations?user=SODa45gAAAAJ&hl=en" target="_blank" class="mr-3 mr-lg-2">
+            <img src="Image/scholar.png" width="24" height="24" alt="Google Scholar">
+          </a>
+          <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank">
+            <img src="Image/Lab.png" width="24" height="24" alt="Lab Website">
+          </a>
+      </li>
+    </ul>
   </div>
 </nav>
   
-<!-- メインコンテンツ -->
 <main class="container">
-  <h1>Works / 制作物</h1>
+  <h1>Works</h1>
 
-<div class="mb-5"> 
-  <h2>📱 recolLe（Web & iOSアプリ）</h2>
+  <div class="mb-5"> 
+    <h2>
+        <span class="lang-ja">📱 recolLe（Web & iOSアプリ）</span>
+        <span class="lang-en">📱 recolLe (Web & iOS App)</span>
+    </h2>
     <div class="mt-3">
-      <img src="Image/1024.png" alt="recolLeアプリ画像" width="200" class="img-fluid mb-3 rounded">
-      <p>
+      <img src="Image/1024.png" alt="recolLe" width="200" class="img-fluid mb-3 rounded">
+      
+      <p class="lang-ja">
         「ありふれた思い出」に彩りを。<br>
         NFCタグを搭載したアクリルキーホルダーにスマホをかざすだけで見られる、あなただけのオリジナルアルバム。<br>
         写真を見返すという体験をより楽しいものに。<br>
@@ -101,55 +128,124 @@
         <a href="https://apps.apple.com/jp/app/recolle-nfc-photo-album/id6755230226" target="_blank">App Store</a> <br>
         HackU名城大学2025にて制作。
       </p>
+
+      <p class="lang-en">
+        Adding color to "ordinary memories".<br>
+        Your own original album that can be viewed simply by holding your smartphone over an acrylic keychain equipped with an NFC tag.<br>
+        Making the experience of looking back at photos more enjoyable.<br>
+        URL: <a href="https://recolle.vercel.app/" target="_blank">Web</a>,  
+        <a href="https://apps.apple.com/jp/app/recolle-nfc-photo-album/id6755230226" target="_blank">App Store</a> <br>
+        Created at Hack U Meijo University 2025.
+      </p>
     </div>
   </div>
   
-<div class="mb-5"> 
-  <h2>💰 おつりDoctor（iOSアプリ）</h2>
+  <div class="mb-5"> 
+    <h2>
+        <span class="lang-ja">💰 おつりDoctor（iOSアプリ）</span>
+        <span class="lang-en">💰 おつりDoctor (iOS App)</span>
+    </h2>
     <div class="mt-3">
-      <img src="Image/kozeniicon2.png" alt="おつりDoctorアプリ画像" width="200" class="img-fluid mb-3 rounded">
-      <p>
+      <img src="Image/kozeniicon2.png" alt="おつりDoctor" width="200" class="img-fluid mb-3 rounded">
+      
+      <p class="lang-ja">
         小銭を並べてカメラで撮影すると、各種小銭の枚数や合計金額を計算可能。<br>
         利用回数が増えることによる成長機能も搭載。<br>
         公開URL：<a href="https://apps.apple.com/jp/app/%E3%81%8A%E3%81%A4%E3%82%8Adoctor/id6755966828" target="_blank">App Store</a> <br>
         友人との共同制作。
       </p>
+
+      <p class="lang-en">
+        Calculate the number and total amount of coins simply by arranging them and taking a picture with the camera.<br>
+        Equipped with a growth function that evolves as you use it more.<br>
+        URL: <a href="https://apps.apple.com/jp/app/%E3%81%8A%E3%81%A4%E3%82%8Adoctor/id6755966828" target="_blank">App Store</a> <br>
+        Collaborative work with a friend.
+      </p>
     </div>
   </div>
   
-<div class="mb-5"> 
-  <h2>🔍 超kAI像（iOSアプリ）</h2>
+  <div class="mb-5"> 
+    <h2>
+        <span class="lang-ja">🔍 超kAI像（iOSアプリ）</span>
+        <span class="lang-en">🔍 超kAI像 (iOS App)</span>
+    </h2>
     <div class="mt-3">
-      <img src="Image/choukaizou_icon.png" alt="超kAI像アプリ画像" width="200" class="img-fluid mb-3 rounded">
-      <p>
+      <img src="Image/choukaizou_icon.png" alt="超kAI像" width="200" class="img-fluid mb-3 rounded">
+      
+      <p class="lang-ja">
         AI超解像で写真を最大4倍に高精細化します。細部までくっきり、自然な仕上がりです！<br>
         フォルダで賢く分類し、写真ごとにメモを保存できます。<br>
-        公開URL：<a href="https://apps.apple.com/jp/app/%E8%B6%85kai%E8%94%B5/id6751739848" target="_blank">App Store</a>　<br>
+        公開URL：<a href="https://apps.apple.com/jp/app/%E8%B6%85kai%E8%94%B5/id6751739848" target="_blank">App Store</a> <br>
         友人との共同制作。
+      </p>
+
+      <p class="lang-en">
+        Enhance photos up to 4x resolution using AI super-resolution technology. Sharp details with a natural finish!<br>
+        Smartly categorize with folders and save memos for each photo.<br>
+        URL: <a href="https://apps.apple.com/jp/app/%E8%B6%85kai%E8%94%B5/id6751739848" target="_blank">App Store</a> <br>
+        Collaborative work with a friend.
       </p>
     </div>
   </div>
 
   <div class="mb-5">
-    <h2>👔 kikonAshI（iOSアプリ）</h2>
+    <h2>
+        <span class="lang-ja">👔 kikonAshI（iOSアプリ）</span>
+        <span class="lang-en">👔 kikonAshI (iOS App)</span>
+    </h2>
     <div class="mt-3">
-      <img src="Image/kikonashi_icon.png" alt="kikonAshIアプリ画像" width="200" class="img-fluid mb-3 rounded">
-      <p>
+      <img src="Image/kikonashi_icon.png" alt="kikonAshI" width="200" class="img-fluid mb-3 rounded">
+      
+      <p class="lang-ja">
         ファッションに特化したAIを独自開発。iPhoneで撮影した洋服の画像をもとに、最適なコーディネートをAIが提案。<br>
         コーディネートのおしゃれ度も測定してくれる、日常に寄り添うアシスタントアプリです。<br>
-        公開URL：<a href="https://apps.apple.com/us/app/kikonashi/id6502258139" target="_blank">App Store</a>　<br>
+        公開URL：<a href="https://apps.apple.com/us/app/kikonashi/id6502258139" target="_blank">App Store</a> <br>
         HackU名城大学2023にて制作。
+      </p>
+
+      <p class="lang-en">
+        Developed a specialized AI for fashion. Based on photos of clothes taken with an iPhone, the AI suggests optimal outfits.<br>
+        A daily assistant app that also measures the fashion score of your coordination.<br>
+        URL: <a href="https://apps.apple.com/us/app/kikonashi/id6502258139" target="_blank">App Store</a> <br>
+        Created at Hack U Meijo University 2023.
       </p>
     </div>
   </div>
 
 </main>
 
-<!-- フッター -->
 <footer class="page-footer bg-light border text-center py-3">
-  <a href="#top">▲ 一番上に戻る</a><br>
+  <a href="#top">▲ <span class="lang-ja">一番上に戻る</span><span class="lang-en">Top</span></a><br>
   © 2025 Hinako Mitsuoka 🍑
 </footer>
+
+<script>
+    // 設定を読み込む
+    let currentLang = localStorage.getItem('siteLang') || 'ja';
+
+    document.addEventListener("DOMContentLoaded", function() {
+        applyLanguage(currentLang);
+    });
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'ja') ? 'en' : 'ja';
+        applyLanguage(currentLang);
+        localStorage.setItem('siteLang', currentLang);
+    }
+
+    function applyLanguage(lang) {
+        var jaElements = document.getElementsByClassName('lang-ja');
+        var enElements = document.getElementsByClassName('lang-en');
+
+        if (lang === 'ja') {
+            for (var i = 0; i < jaElements.length; i++) jaElements[i].style.display = 'block';
+            for (var i = 0; i < enElements.length; i++) enElements[i].style.display = 'none';
+        } else {
+            for (var i = 0; i < jaElements.length; i++) jaElements[i].style.display = 'none';
+            for (var i = 0; i < enElements.length; i++) enElements[i].style.display = 'block';
+        }
+    }
+</script>
 
 </body>
 </html>
