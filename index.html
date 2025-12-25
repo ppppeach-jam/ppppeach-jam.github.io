@@ -14,7 +14,7 @@
     }
     h1 {
       color: #b65775;
-      font-size: 2rem; /* スマホ向けに少し調整 */
+      font-size: 2rem;
     }
     h2 {
       border-bottom: 2px solid #f8a3c4;
@@ -45,7 +45,7 @@
 
     /* 言語切り替え用のスタイル */
     .lang-en {
-      display: none; /* 初期状態では英語を隠す */
+      display: none;
     }
     /* 言語切り替えボタンの見た目 */
     .lang-switch-btn {
@@ -62,13 +62,14 @@
         text-decoration: none;
     }
 
-    /* プロフィールリストの整列（スマホ対応用） */
+    /* プロフィールリストの整列（修正版） */
     .profile-item {
         margin-bottom: 0.5rem;
     }
     .profile-date {
         font-weight: bold;
         color: #888;
+        /* PC画面では右寄せ、スマホでは左寄せ */
     }
     @media (min-width: 768px) {
         .profile-date {
@@ -131,39 +132,39 @@
   
   <div class="lang-ja">
       <div class="row profile-item">
-          <div class="col-md-3 profile-date">2024.04 ~ 現在</div>
-          <div class="col-md-9">名城大学大学院 理工学研究科 電気電子工学専攻（博士前期課程）</div>
+          <div class="col-md-2 profile-date">2024.04 ~ 現在</div>
+          <div class="col-md-10">名城大学大学院 理工学研究科 電気電子工学専攻（博士前期課程）</div>
       </div>
       <div class="row profile-item">
-          <div class="col-md-3 profile-date">2024.04 ~ 現在</div>
-          <div class="col-md-9">名古屋CV・PRML勉強会 幹事</div>
+          <div class="col-md-2 profile-date">2024.04 ~ 現在</div>
+          <div class="col-md-10">名古屋CV・PRML勉強会 幹事</div>
       </div>
       <div class="row profile-item">
-          <div class="col-md-3 profile-date">2024.08 ~ 2024.09</div>
-          <div class="col-md-9">NEC バイオメトリクス研究所 研究インターンシップ</div>
+          <div class="col-md-2 profile-date">2024.08 ~ 2024.09</div>
+          <div class="col-md-10">NEC バイオメトリクス研究所 研究インターンシップ</div>
       </div>
       <div class="row profile-item">
-          <div class="col-md-3 profile-date">2020.04 ~ 2024.03</div>
-          <div class="col-md-9">名城大学 理工学部 電気電子工学科 (学士)</div>
+          <div class="col-md-2 profile-date">2020.04 ~ 2024.03</div>
+          <div class="col-md-10">名城大学 理工学部 電気電子工学科 (学士)</div>
       </div>
   </div>
 
   <div class="lang-en">
       <div class="row profile-item">
-          <div class="col-md-3 profile-date">2024.04 ~ Current</div>
-          <div class="col-md-9">Department of Electrical and Electronic Engineering, Graduate School of Science and Engineering, Meijo University (Master of Engineering)</div>
+          <div class="col-md-2 profile-date">2024.04 ~ Current</div>
+          <div class="col-md-10">Department of Electrical and Electronic Engineering, Graduate School of Science and Engineering, Meijo University (Master of Engineering)</div>
       </div>
       <div class="row profile-item">
-          <div class="col-md-3 profile-date">2024.04 ~ Current</div>
-          <div class="col-md-9">Nagoya CVPRML Seminar Organizer</div>
+          <div class="col-md-2 profile-date">2024.04 ~ Current</div>
+          <div class="col-md-10">Nagoya CVPRML Seminar Organizer</div>
       </div>
       <div class="row profile-item">
-          <div class="col-md-3 profile-date">2024.08 ~ 2024.09</div>
-          <div class="col-md-9">NEC Biometrics Research Laboratories, Research Internship</div>
+          <div class="col-md-2 profile-date">2024.08 ~ 2024.09</div>
+          <div class="col-md-10">NEC Biometrics Research Laboratories, Research Internship</div>
       </div>
       <div class="row profile-item">
-          <div class="col-md-3 profile-date">2020.04 ~ 2024.03</div>
-          <div class="col-md-9">Department of Electrical and Electronic Engineering, Faculty of Engineering, Meijo University (Bachelor of Engineering)</div>
+          <div class="col-md-2 profile-date">2020.04 ~ 2024.03</div>
+          <div class="col-md-10">Department of Electrical and Electronic Engineering, Faculty of Engineering, Meijo University (Bachelor of Engineering)</div>
       </div>
   </div>
 
@@ -173,8 +174,8 @@
     <li>Program Committee Member,&nbsp;&nbsp;The 40th Annual AAAI Conference on Artificial Intelligence（AAAI2026) </li>
     <li>
       <span class="lang-ja">CVPR2025 Report作成協力</span>
-      <span class="lang-en">CVPR2025 Report Contributor</span><br>
-      URL：<a href="https://t.co/OZQ3l2Pnc5" target="_blank">https://t.co/OZQ3l2Pnc5</a>
+      <span class="lang-en">CVPR2025 Report Contributor</span>
+       : <a href="https://t.co/OZQ3l2Pnc5" target="_blank">https://t.co/OZQ3l2Pnc5</a>
     </li>
     <li>Reviewer,&nbsp;&nbsp;IEEE/CVF International Conference on Computer Vision（ICCV2025）Workshop（HiCV）</li>
     <li>Technical Program Committee Member,&nbsp;&nbsp;European Conference on Computer Vision（ECCV2024）Workshop（HCV）</li>
@@ -202,19 +203,15 @@
 </footer>
 
 <script>
-    // 現在の言語状態を保持（初期値は日本語）
     let currentLang = localStorage.getItem('siteLang') || 'ja';
 
-    // ページ読み込み時に言語を適用
     document.addEventListener("DOMContentLoaded", function() {
         applyLanguage(currentLang);
     });
 
     function toggleLanguage() {
-        // 言語を反転させる
         currentLang = (currentLang === 'ja') ? 'en' : 'ja';
         applyLanguage(currentLang);
-        // 設定をブラウザに保存（次回アクセス時に覚えているように）
         localStorage.setItem('siteLang', currentLang);
     }
 
