@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <title>Hinako Mitsuoka | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://unpkg.com/@primer/css@20.4.4/dist/primer.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     /* === 🍑 Peach-Jam Theme === */
@@ -32,23 +36,21 @@
       transition: background-color 0.3s;
     }
 
-    /* === Language Toggle Logic (重要) === */
-    /* data-lang="jp" の時は .lang-en を隠す */
+    /* === Language Toggle Logic === */
     body[data-lang="jp"] .lang-en { display: none !important; }
-    /* data-lang="en" の時は .lang-jp を隠す */
     body[data-lang="en"] .lang-jp { display: none !important; }
 
     /* === Layout === */
     .page { max-width: 1000px; margin: 0 auto; padding: 20px; }
 
-    /* === Header & Lang Button === */
+    /* === Header === */
     header {
       background: var(--header-bg);
       padding: 40px 20px;
       border-radius: 0 0 20px 20px;
       margin-bottom: 30px;
       text-align: center;
-      position: relative; /* 言語ボタンの配置用 */
+      position: relative;
     }
     
     .lang-switch {
@@ -76,7 +78,6 @@
       transition: all 0.2s;
     }
     
-    /* 選択中の言語ボタンのスタイル */
     .lang-btn.active {
       background: var(--accent-strong);
       color: white;
@@ -92,7 +93,7 @@
     .tab-nav {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap; /* スマホで折り返し */
+      flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 30px;
       position: sticky;
@@ -126,7 +127,7 @@
     .tab-content.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* === Cards === */
+    /* === Cards & Lists === */
     .card {
       background: var(--surface);
       border: 1px solid var(--stroke);
@@ -140,13 +141,43 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.05);
       border-color: var(--accent);
     }
-    .card-title { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; display: block; text-decoration: none; }
-    .card-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
-    .tag {
-      display: inline-block; padding: 3px 10px; font-size: 0.75rem;
-      border-radius: 20px; background: #fff0f5; color: var(--accent-strong); margin-right: 5px; margin-bottom: 6px;
-    }
     
+    /* セクション見出し */
+    h2 {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.3em;
+      margin-top: 1.5em;
+      margin-bottom: 1em;
+      color: var(--accent-strong);
+      font-size: 1.4rem;
+    }
+
+    /* PDF Badge Style */
+    .badge-pdf {
+        background-color: var(--accent-strong);
+        color: white !important;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.85em;
+        text-decoration: none;
+        margin-left: 8px;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid var(--accent-strong);
+    }
+    .badge-pdf:hover {
+        background-color: white;
+        color: var(--accent-strong) !important;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(255, 92, 141, 0.3);
+    }
+
+    /* リスト調整 */
+    ol { padding-left: 1.4em; color: var(--text-main); }
+    ol li { margin-bottom: 1.2em; line-height: 1.6; }
+
     footer { text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem; }
   </style>
 </head>
@@ -185,7 +216,7 @@
   </nav>
 
   <div id="profile" class="tab-content active">
-    <h2 style="color: var(--accent-strong);">Biography</h2>
+    <h2><span class="lang-jp">経歴</span><span class="lang-en">Biography</span></h2>
     <div class="card">
       <ul style="line-height: 1.8; color: var(--text); padding-left: 20px;">
         <li>
@@ -208,34 +239,103 @@
   </div>
 
   <div id="achievements" class="tab-content">
-    <h2 style="color: var(--accent-strong);">Awards & Honors</h2>
+    <h2><span class="lang-jp">受賞・表彰</span><span class="lang-en">Awards & Honors</span></h2>
     <div class="card">
-      <span class="tag">Award</span>
-      <div class="card-title">
+      <div style="font-weight:bold; color:var(--text-main);">
         <span class="lang-jp">ViEW2024 外観検査アルゴリズムコンテスト 最優秀賞</span>
         <span class="lang-en">ViEW2024 Visual Inspection Algorithm Contest: Best Award</span>
       </div>
-      <div class="card-meta">Dec 2024</div>
+      <div style="font-size:0.9em; color:var(--muted);">Dec 2024</div>
     </div>
   </div>
 
   <div id="publications" class="tab-content">
-    <h2 style="color: var(--accent-strong);">Research Papers</h2>
     
+    <h2>
+        <span class="lang-jp">📰 学術論文誌</span>
+        <span class="lang-en">📰 Journal・Academic Journal</span>
+    </h2>
     <div class="card">
-      <span class="tag">DC1 Application</span> <span class="tag">TAS</span>
-      <a href="#" class="card-title">Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation</a>
-      <div class="card-meta">Dec 2025 (In Preparation)</div>
+      <ol reversed>
+        <li>
+            <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
+            "Human Brain-Inspired Network Using Transformer and Feedback Processing for Cell Image Segmentation", 
+            <i>IEEE Access</i>, 13, pp.50917-50930, 2025. 
+            (impact factor=<b>3.6</b>, acceptance rate=<b>27</b>%)
+            <a href="https://ieeexplore.ieee.org/document/10934004" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+        </li>
+      </ol>
+    </div>
+
+    <h2>
+        <span class="lang-jp">📘 国際学会 (フルペーパー査読)</span>
+        <span class="lang-en">📘 International Conferences (Refereed)</span>
+    </h2>
+    <div class="card">
+      <ol reversed>
+        <li>
+            <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
+            "Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation", 
+            <i>The International Conference on Computer Vision Theory and Applications (VISAPP2026)</i>, 
+            March, 2026, Marbella, Spain (Oral).
+        </li>
+        <li>
+            <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
+            "Accuracy Improvement of Cell Image Segmentation Using Feedback Former", 
+            <i>In Proceedings of the 18th European Conference on Computer Vision ECCV 2024 workshop (HCV)</i>, 
+            October, 2024, Milano, Italy (Poster).
+            <a href="https://arxiv.org/pdf/2408.12974" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+        </li>
+        <li>
+            Sota Kato, <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
+            "Generalized SAM: Efficient Fine-Tuning of SAM for Variable Input Image Sizes", 
+            <i>In Proceedings of the 18th European Conference on Computer Vision ECCV 2024 workshop (CADL)</i>, 
+            October, 2024, Milano, Italy (Oral).
+            <a href="https://arxiv.org/pdf/2408.12406.pdf" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+        </li>
+      </ol>
+    </div>
+
+    <h2>
+        <span class="lang-jp">📚 国内学会・シンポジウム</span>
+        <span class="lang-en">📚 Domestic Conferences</span>
+    </h2>
+    <div class="card">
+      <ol reversed>
+        <li>坂井泰吾，<b><u>光岡 日菜子</u></b>, 堀田一弘, "検出・分類の二段階フレームワークによるキャベツの葉数推定～YOLOv12・ConvNeXtv2および合成データ・境界情報の活用～", ビジョン技術の実利用ワークショップ2025（ViEW2025）内：外観検査アルゴリズムコンテスト, 2025年12月, 神奈川横浜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "SAM2の効率的追加学習による医用・細胞画像セグメンテーション", ビジョン技術の実利用ワークショップ2025（ViEW2025）, 2025年12月, 神奈川横浜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "基盤モデルSAM2の医用画像適応に向けたAdapterの提案", 2025年度 日本生体医工学東海支部大会, 2025年11月, 愛知県名古屋市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 河野洋平, 堀田一弘, "効率的境界検出と最適輸送損失による時系列行動セグメンテーションの精度向上", 第28回情報論的学習理論ワークショップ（IBIS2025）, 2025年11月, 沖縄県那覇市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "Feedback Formerを用いた細胞画像セグメンテーションの精度向上", 令和七年度 電気・電子・情報関係学会東海支部連合大会 OS5「学生研究奨励賞【修士の部】による特別講演」, 2025年09月, 長野県長野市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "時系列行動セグメンテーションにおける汎用的性能向上のための行動境界識別用チャネル拡張手法の提案, 第24回情報科学技術フォーラム（FIT2025）, 2025年09月, 北海道札幌市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 荻野有加, 戸泉貴裕, 堀田一弘, "マルチタスク学習による弱教師あり赤外線小物体検出の精度向上及び安定化", 第28回画像の認識・理解シンポジウム（MIRU2025), 2025年07-08月, 京都府京都市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "マルチタスク学習による弱教師あり赤外線小物体セグメンテーションの精度向上及び安定化", 令和6年度 電子情報通信学会 総合大会, 2024年03月, 東京都世田谷区.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "ラベル不均衡な場合の医用画像セグメンテーションにおけるValidationデータ不要の損失関数設計", 医用画像情報学会 令和6年度201回大会, 2024年2月, 愛知県名古屋市.</li>
+        <li>坂井泰吾, <b><u>光岡 日菜子</u></b>, "YOLOv8を用いた分割領域毎の検出及び時系列情報を利用した追跡 ～オクルージョンと小物体検出に対応した時系列追跡アルゴリズム～", ビジョン技術の実利用ワークショップ2024（ViEW2024）内：外観検査アルゴリズムコンテスト, 2024年12月, 神奈川県横浜市.</li>
+        <li>横井悠人, 齋藤令次, <b><u>光岡 日菜子</u></b>, 堀田一弘, "Multiplicative loss functionを用いたセグメンテーションの精度向上", ビジョン技術の実利用ワークショップ2024（ViEW2024）, 2024年12月, 神奈川県横浜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 高橋望, 久保田茜, 遠藤求, 堀田一弘, "ラベル不均衡な根毛画像データに対するセグメンテーション及び損失関数の最適化", ビジョン技術の実利用ワークショップ2024（ViEW2024）, 2024年12月, 神奈川県横浜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 高橋望, 久保田茜, 遠藤求, 堀田一弘, "セマンティックセグメンテーションと1対1マッチングによる根毛の伸長過程の自動定量化", 令和六年度 電気・電子・情報関係学会東海支部連合大会, 2024年08月, 岐阜県岐阜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "Feedback Formerを用いた細胞画像セグメンテーションの精度向上", 第27回画像の認識・理解シンポジウム（MIRU2024), 2024年08月, 熊本県熊本市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "TransformerとFeedbackを用いた細胞画像セグメンテーションの精度向上", CVIM2024年5月研究会プログラム（CVIM第238回）, 2024年05月, 東京都目黒区.</li>
+      </ol>
+    </div>
+
+    <h2>
+        <span class="lang-jp">🎓 学位論文</span>
+        <span class="lang-en">🎓 Thesis</span>
+    </h2>
+    <div class="card">
       <p>
-        <span class="lang-jp">時間的行動分割(TAS)において、過剰分割を防ぐための新たな損失関数を提案。</span>
-        <span class="lang-en">Proposed a novel loss function to prevent over-segmentation in Temporal Action Segmentation (TAS).</span>
+        <span class="lang-jp"><b>学士論文：</b></span>
+        <span class="lang-en"><b>Bachelor's Thesis:</b></span><br>
+        「TransformerとFeedbackを用いた細胞画像のセグメンテーション精度向上」
       </p>
     </div>
+
   </div>
 
   <div id="works" class="tab-content">
-    <h2 style="color: var(--accent-strong);">Projects & Activities</h2>
-    
+    <h2><span class="lang-jp">活動</span><span class="lang-en">Projects & Activities</span></h2>
     <div class="card">
       <span class="tag">Blog</span>
       <div class="card-title">Note Blog</div>
@@ -249,7 +349,7 @@
 </div>
 
 <footer>
-  © 2025 Hinako Mitsuoka
+  © 2025 Hinako Mitsuoka 🍑
 </footer>
 
 <script>
@@ -269,10 +369,7 @@
 
   // === 言語切り替え機能 ===
   function setLang(lang) {
-    // bodyの属性を書き換える（CSSが反応して表示が切り替わる）
     document.body.setAttribute('data-lang', lang);
-    
-    // ボタンの見た目を変える
     document.getElementById('btn-jp').classList.toggle('active', lang === 'jp');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   }
