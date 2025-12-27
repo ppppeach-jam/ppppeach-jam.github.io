@@ -142,7 +142,6 @@
       border-color: var(--accent);
     }
     
-    /* セクション見出し */
     h2 {
       border-bottom: 2px solid var(--accent);
       padding-bottom: 0.3em;
@@ -174,9 +173,14 @@
         box-shadow: 0 2px 5px rgba(255, 92, 141, 0.3);
     }
 
-    /* リスト調整 */
+    /* リスト調整 (論文・Thesis共通) */
+    /* 論文リスト (番号あり) */
     ol { padding-left: 1.4em; color: var(--text-main); }
     ol li { margin-bottom: 1.2em; line-height: 1.6; }
+    
+    /* 学位論文用 (番号なしリスト) */
+    ul.thesis-list { padding-left: 1.4em; color: var(--text-main); list-style: none; }
+    ul.thesis-list li { margin-bottom: 1.2em; line-height: 1.6; }
 
     footer { text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem; }
   </style>
@@ -218,7 +222,7 @@
   <div id="profile" class="tab-content active">
     <h2><span class="lang-jp">経歴</span><span class="lang-en">Biography</span></h2>
     <div class="card">
-      <ul style="line-height: 1.8; color: var(--text); padding-left: 20px;">
+      <ul style="line-height: 1.8; color: var(--text-main); padding-left: 20px;">
         <li>
           <b>2024.04 - <span class="lang-jp">現在</span><span class="lang-en">Present</span></b>: 
           <span class="lang-jp">名城大学大学院 理工学研究科 電気電子工学専攻（修士課程）</span>
@@ -256,7 +260,7 @@
         <span class="lang-en">📰 Journal・Academic Journal</span>
     </h2>
     <div class="card">
-      <ol reversed>
+      <ol>
         <li>
             <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
             "Human Brain-Inspired Network Using Transformer and Feedback Processing for Cell Image Segmentation", 
@@ -272,7 +276,7 @@
         <span class="lang-en">📘 International Conferences (Refereed)</span>
     </h2>
     <div class="card">
-      <ol reversed>
+      <ol>
         <li>
             <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
             "Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation", 
@@ -301,7 +305,7 @@
         <span class="lang-en">📚 Domestic Conferences</span>
     </h2>
     <div class="card">
-      <ol reversed>
+      <ol>
         <li>坂井泰吾，<b><u>光岡 日菜子</u></b>, 堀田一弘, "検出・分類の二段階フレームワークによるキャベツの葉数推定～YOLOv12・ConvNeXtv2および合成データ・境界情報の活用～", ビジョン技術の実利用ワークショップ2025（ViEW2025）内：外観検査アルゴリズムコンテスト, 2025年12月, 神奈川横浜市.</li>
         <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "SAM2の効率的追加学習による医用・細胞画像セグメンテーション", ビジョン技術の実利用ワークショップ2025（ViEW2025）, 2025年12月, 神奈川横浜市.</li>
         <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "基盤モデルSAM2の医用画像適応に向けたAdapterの提案", 2025年度 日本生体医工学東海支部大会, 2025年11月, 愛知県名古屋市.</li>
@@ -325,11 +329,13 @@
         <span class="lang-en">🎓 Thesis</span>
     </h2>
     <div class="card">
-      <p>
-        <span class="lang-jp"><b>学士論文：</b></span>
-        <span class="lang-en"><b>Bachelor's Thesis:</b></span><br>
-        「TransformerとFeedbackを用いた細胞画像のセグメンテーション精度向上」
-      </p>
+      <ul class="thesis-list">
+        <li>
+            <span class="lang-jp"><b>学士論文：</b></span>
+            <span class="lang-en"><b>Bachelor's Thesis:</b></span><br>
+            「TransformerとFeedbackを用いた細胞画像のセグメンテーション精度向上」
+        </li>
+      </ul>
     </div>
 
   </div>
