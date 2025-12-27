@@ -17,35 +17,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    /* === 🍑 Fresh Peach Theme (フレッシュな白桃テーマ) === */
+    /* === 🍑 === */
     :root {
-      /* ユーザー指定カラー */
-      --peach-pink: #f09199;  /* メインのピンク */
-      --peach-cream: #ffffcc; /* メインのイエロー */
+      /* 指定 */
+      --peach-pink: #f09199;
+      --peach-cream: #ffffcc; 
 
-      /* 背景：ごく薄いピンクベージュで馴染ませる */
       --bg: #fffbfb;
       --surface: #ffffff;
-      
-      /* テキスト：少し赤みのあるグレーで柔らかく */
       --text: #5e4e50;
       --text-main: #4a3b3d;
       --muted: #a39294;
-      
-      /* アクセントカラー調整 */
       --accent: var(--peach-pink);
-      /* 文字色や強調用に、ピンクを少し濃くしたもの */
       --accent-strong: #d66a75; 
-      /* 黄色のアクセント（文字が見えるように少し濃いクリームへ） */
       --accent-yellow: #f5e6a4;
-
-      /* 線の色 */
       --stroke: #ffeef0;
-      
-      /* ヘッダー：左上(黄)から右下(ピンク)へ、桃の皮のようなグラデーション */
       --header-bg: linear-gradient(135deg, var(--peach-cream) 0%, #ffe0e3 40%, var(--peach-pink) 100%);
-      
-      /* グラデーション装飾用 */
       --gradient-line: linear-gradient(to right, var(--peach-pink), var(--peach-cream));
     }
 
@@ -73,11 +60,10 @@
     header {
       background: var(--header-bg);
       padding: 50px 20px;
-      border-radius: 0 0 30px 30px; /* 丸みを強調 */
+      border-radius: 0 0 30px 30px;
       margin-bottom: 40px;
       text-align: center;
       position: relative;
-      /* ふんわりとしたピンクの影 */
       box-shadow: 0 10px 30px rgba(240, 145, 153, 0.2);
     }
     
@@ -126,7 +112,7 @@
         color: var(--text-main); 
         margin: 0; 
         letter-spacing: 0.05em;
-        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5); /* 文字を少し浮かせる */
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
     }
     .subtitle { color: var(--text); margin-top: 10px; font-weight: 500; opacity: 0.8; }
     
@@ -170,7 +156,6 @@
     }
 
     .tab-btn.active {
-      /* ボタン自体もグラデーションに */
       background: linear-gradient(135deg, var(--peach-pink), #ffabc0);
       color: white;
       border-color: transparent;
@@ -191,11 +176,11 @@
       padding: 24px;
       margin-bottom: 24px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.01); /* 影を極薄に */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.01);
     }
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(240, 145, 153, 0.15); /* ホバー時はピンクの光 */
+      box-shadow: 0 15px 30px rgba(240, 145, 153, 0.15);
       border-color: var(--peach-pink);
     }
     
@@ -208,7 +193,7 @@
       font-size: 1.5rem;
       border-bottom: none; 
     }
-    /* ピンクからクリーム色へのグラデーションライン */
+    /* グラデーション */
     h2::after {
         content: '';
         position: absolute;
@@ -286,7 +271,7 @@
         font-size: 0.9rem; transition: all 0.2s; font-weight: 600;
     }
     .filter-btn:hover, .filter-btn.active {
-        background: #fffcf0; /* 薄いクリーム */
+        background: #fffcf0;
         border-color: var(--peach-pink); 
         color: var(--accent-strong);
     }
@@ -311,7 +296,6 @@
 
     .skill-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; margin-bottom: 20px; }
     .skill-tag {
-        /* 背景色をクリーム系に */
         background-color: #fffdf5; 
         color: var(--text-main);
         border: 1px solid var(--stroke); 
@@ -324,7 +308,6 @@
     footer { 
         text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.95rem; margin-top: 50px; 
         border-top: none;
-        /* フッターは淡いイエローから白へ */
         background: linear-gradient(to top, var(--peach-cream) 0%, var(--bg) 100%);
     }
 
@@ -335,14 +318,14 @@
         right: 30px;
         width: 50px;
         height: 50px;
-        background: var(--peach-pink); /* ピンク色のボタン */
+        background: var(--peach-pink); 
         color: white;
         border: none;
         border-radius: 50%;
         cursor: pointer;
         font-size: 1.2rem;
         box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        opacity: 0; /* 最初は非表示 */
+        opacity: 0; 
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 1000;
