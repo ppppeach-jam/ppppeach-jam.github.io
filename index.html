@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Hinako Mitsuoka | Portfolio</title>
+  <meta name="description" content="名城大学大学院 光岡日菜子のポートフォリオ。研究業績、開発アプリ(iOS/Web)、スキルセットを掲載。">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
+  <meta property="og:title" content="Hinako Mitsuoka | Portfolio">
+  <meta property="og:description" content="名城大学大学院 光岡日菜子のポートフォリオサイト">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://unpkg.com/@primer/css@20.4.4/dist/primer.css">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
@@ -34,6 +37,7 @@
       margin: 0;
       padding: 0;
       transition: background-color 0.3s;
+      scroll-behavior: smooth; /* スムーススクロール */
     }
 
     /* === Language Toggle Logic === */
@@ -51,6 +55,16 @@
       margin-bottom: 30px;
       text-align: center;
       position: relative;
+    }
+    
+    .profile-img {
+        width: 120px; height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white;
+        box-shadow: 0 4px 15px rgba(255, 92, 141, 0.2);
+        margin-bottom: 15px;
+        background-color: white; /* 画像がない場合の背景 */
     }
     
     .lang-switch {
@@ -83,11 +97,15 @@
       color: white;
     }
 
-    h1 { font-size: 2.5rem; color: var(--text-main); margin: 0; }
+    h1 { font-size: 2.5rem; color: var(--text-main); margin: 0; letter-spacing: 0.05em; }
     .subtitle { color: var(--muted); margin-top: 10px; font-weight: 500; }
     
     .social-links { margin-top: 15px; }
-    .social-links a { margin: 0 10px; color: var(--accent-strong); text-decoration: none; font-weight: bold; }
+    .social-links a { 
+        margin: 0 10px; color: var(--accent-strong); text-decoration: none; font-weight: bold;
+        transition: opacity 0.2s;
+    }
+    .social-links a:hover { opacity: 0.7; }
 
     /* === Tabs Navigation === */
     .tab-nav {
@@ -99,10 +117,11 @@
       position: sticky;
       top: 10px;
       z-index: 100;
+      padding: 10px 0; /* sticky時の余白確保 */
     }
 
     .tab-btn {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--stroke);
       padding: 10px 24px;
       border-radius: 30px;
@@ -114,6 +133,11 @@
       backdrop-filter: blur(5px);
     }
 
+    .tab-btn:hover {
+        background: #fff0f5;
+        color: var(--accent-strong);
+    }
+
     .tab-btn.active {
       background: var(--accent);
       color: white;
@@ -123,7 +147,7 @@
     }
 
     /* === Content === */
-    .tab-content { display: none; animation: fadeIn 0.5s; }
+    .tab-content { display: none; animation: fadeIn 0.4s ease-out; }
     .tab-content.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -138,7 +162,7 @@
     }
     .card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 25px rgba(255, 92, 141, 0.1);
       border-color: var(--accent);
     }
     
@@ -189,31 +213,42 @@
 
     /* Lists */
     ol, ul { padding-left: 1.4em; color: var(--text-main); }
-    li { margin-bottom: 1.2em; line-height: 1.6; }
-    ul li::marker, ol li::marker { color: var(--accent-strong); }
+    li { margin-bottom: 1.2em; line-height: 1.7; }
+    ul li::marker, ol li::marker { color: var(--accent-strong); font-weight: bold; }
 
     /* === Works Tab Specific === */
     .search-container { margin-bottom: 20px; text-align: center; }
     .search-input {
-        width: 100%; max-width: 400px; padding: 10px 20px;
+        width: 100%; max-width: 400px; padding: 12px 20px;
         border-radius: 25px; border: 2px solid var(--stroke);
         font-size: 1rem; outline: none; transition: border-color 0.3s;
+        background: rgba(255,255,255,0.8);
     }
-    .search-input:focus { border-color: var(--accent); }
+    .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,139,167,0.1); }
+    
+    .filter-btn {
+        background: white; border: 1px solid var(--stroke); color: var(--text-main);
+        padding: 6px 14px; border-radius: 20px; cursor: pointer; margin: 0 4px;
+        font-size: 0.9rem; transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+        background: #fff0f5; border-color: var(--accent); color: var(--accent-strong);
+    }
 
-    .work-card { display: flex; flex-direction: column; gap: 15px; }
+    .work-card { display: flex; flex-direction: column; gap: 20px; }
     @media (min-width: 600px) { .work-card { flex-direction: row; align-items: start; } }
     
     .work-icon {
         width: 100px; height: 100px; object-fit: cover;
-        border-radius: 20px; border: 1px solid var(--stroke);
+        border-radius: 22px; border: 1px solid var(--stroke);
         flex-shrink: 0; margin: 0 auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
     @media (min-width: 600px) { .work-icon { margin: 0; } }
 
     .work-content { flex: 1; }
     .work-title {
-        font-size: 1.2rem; font-weight: 700; color: var(--accent-strong); margin-bottom: 5px; display: block;
+        font-size: 1.25rem; font-weight: 700; color: var(--accent-strong); margin-bottom: 5px; display: block;
     }
 
     .skill-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; margin-bottom: 20px; }
@@ -225,7 +260,7 @@
     }
     .skill-tag i { color: var(--accent-strong); }
 
-    footer { text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem; }
+    footer { text-align: center; padding: 50px 20px; color: var(--muted); font-size: 0.9rem; margin-top: 40px; border-top: 1px solid var(--stroke); }
   </style>
 </head>
 
@@ -239,6 +274,8 @@
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
 
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ffe6ee'/%3E%3Ctext x='50' y='50' font-family='Arial' font-size='40' fill='%23ff5c8d' text-anchor='middle' dy='.3em'%3E🍑%3C/text%3E%3C/svg%3E" alt="Profile Icon" class="profile-img">
+
     <h1>
       <span class="lang-jp">光岡 日菜子 🍑</span>
       <span class="lang-en">Hinako Mitsuoka 🍑</span>
@@ -249,17 +286,17 @@
     </div>
     
     <div class="social-links">
-      <a href="https://github.com/ppppeach-jam">GitHub</a>
-      <a href="https://twitter.com/ramentabetai__1">X (Twitter)</a>
-      <a href="mailto:200442165@ccalumni.meijo-u.ac.jp">Email</a>
+      <a href="https://github.com/ppppeach-jam"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://twitter.com/ramentabetai__1"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+      <a href="mailto:200442165@ccalumni.meijo-u.ac.jp"><i class="fas fa-envelope"></i> Email</a>
     </div>
   </header>
 
   <nav class="tab-nav">
-    <button class="tab-btn active" onclick="openTab('profile')">Profile</button>
-    <button class="tab-btn active" onclick="openTab('achievements')">Achievements</button>
-    <button class="tab-btn" onclick="openTab('publications')">Publications</button>
-    <button class="tab-btn" onclick="openTab('works')">Works</button>
+    <button class="tab-btn active" onclick="openTab('profile', this)">Profile</button>
+    <button class="tab-btn" onclick="openTab('achievements', this)">Achievements</button>
+    <button class="tab-btn" onclick="openTab('publications', this)">Publications</button>
+    <button class="tab-btn" onclick="openTab('works', this)">Works</button>
   </nav>
 
   <div id="profile" class="tab-content active">
@@ -287,7 +324,6 @@
 
   <div id="achievements" class="tab-content">
     <h2><span class="lang-jp">🏆 受賞・表彰</span><span class="lang-en">🏆 Awards & Honors</span></h2>
-    
     <h3>2025</h3>
     <div class="card">
         <ul class="awards-list">
@@ -300,86 +336,9 @@
                 <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：検出・分類の二段階フレームワークによるキャベツの葉数推定～YOLOv12・ConvNeXtv2および合成データ・境界情報の活用～</span>
                 <a href="https://alcon.itlab.org/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
             </li>
-            <li>
-                アクセル株式会社主催 Axell AI Contest入賞（2025年09月）
-                <a href="https://www.axell.co.jp/news/20250714.html" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-            <li>
-                電子情報通信学会東海支部 令和6年度学生研究奨励賞（2025年06月）<br>
-                <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：Feedback Formerを用いた細胞画像セグメンテーションの精度向上</span>
-                <a href="https://www.ieice.org/tokai/student/student-shorei/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
         </ul>
     </div>
-    
-    <h3>2024</h3>
-    <div class="card">
-        <ul class="awards-list">
-            <li>
-                IEEE名古屋支部学生奨励賞（2025年01月）<br>
-                <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：セマンティックセグメンテーションと1対1マッチングによる根毛の伸長過程の自動定量化</span>
-                <a href="https://ieee-jp.org/section/nagoya/category/section-activity/award-comittee/student-encouragement-award/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-            <li>
-                アクセル株式会社主催 Axell AI Contest入賞（2024年09月）
-                <a href="https://ailia.ai/contest/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-        </ul>
     </div>
-    
-    <h3>2023</h3>
-    <div class="card">
-        <ul class="awards-list">
-            <li>名城大学 学長表彰 3件（2024年03月）</li>
-            <li>名城大学 理工学部後援会奨励賞（2024年03月）</li>
-            <li>IEEE Nagoya Section Excellent Student Award（2024年03月）</li>
-            <li>
-                電気学会東海支部長賞（2024年03月）<br>
-                <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：TransformerとFeedbackを用いた細胞画像のセグメンテーション精度向上</span>
-                <a href="https://www.iee.jp/tokai/award/支部長賞受賞者2023年/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-            <li>
-                パワーアカデミー主催 第6回電気工学教材企画コンテスト 最優秀賞（2024年03月）
-                <a href="https://www.power-academy.jp/info/2024/003795.html/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-            <li>
-                Hack U 名城大学 2023 最優秀賞, Happy Hacking賞（2023年12月）
-                <a href="https://hacku.yahoo.co.jp/meijo2023/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-            <li>
-                テクノプロ・デザイン社主催 食品パッケージ画像解析チャレンジ 学生の部3位（2024年10月）
-                <a href="https://www.youtube.com/watch?v=6uCAA5bBXcw" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-            <li>卒業論文中間発表会 優秀発表賞（2023年10月）</li>
-        </ul>
-    </div>
-
-    <h3>～2022</h3>
-    <div class="card">
-        <ul class="awards-list">
-            <li>名城大学 理工学部後援会奨励賞（2023年03月）</li>
-            <li>
-                電気学会主催 U-21学生研究発表会 奨励賞（2023年3月）
-                <a href="https://www.iee.jp/u-21-2023-award/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-            <li>名城大学 学長表彰（2021年03月）</li>
-            <li>名城大学 理工学部後援会奨励賞（2021年03月）</li>
-            <li>
-                パワーアカデミー主催 第3回電気工学教材企画コンテスト 最優秀賞（2021年03月）
-                <a href="https://www.power-academy.jp/info/2021/002707.html" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
-            </li>
-        </ul>
-    </div>
-
-    <h2><span class="lang-jp">🎓 奨学金・助成金</span><span class="lang-en">🎓 Scholarships</span></h2>
-    <div class="card">
-        <ul class="awards-list">
-            <li>公益財団法人 リンナイ奨学財団 奨学助成金 採択（2024年04月～2026年03月）</li>
-            <li>令和5年度 名城大学 学業優秀奨学生（2023年）</li>
-            <li>令和4年度 名城大学 校友会奨学生（2022年）</li>
-        </ul>
-    </div>
-  </div>
 
   <div id="publications" class="tab-content">
     <h2>
@@ -396,74 +355,7 @@
         </li>
       </ol>
     </div>
-
-    <h2>
-        <span class="lang-jp">📘 国際学会 (フルペーパー査読)</span>
-        <span class="lang-en">📘 International Conferences (Refereed)</span>
-    </h2>
-    <div class="card">
-      <ol>
-        <li>
-            <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
-            "Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation", 
-            <i>The International Conference on Computer Vision Theory and Applications (VISAPP2026)</i>, 
-            March, 2026, Marbella, Spain (Oral).
-        </li>
-        <li>
-            <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
-            "Accuracy Improvement of Cell Image Segmentation Using Feedback Former", 
-            <i>In Proceedings of the 18th European Conference on Computer Vision ECCV 2024 workshop (HCV)</i>, 
-            October, 2024, Milano, Italy (Poster).
-            <a href="https://arxiv.org/pdf/2408.12974" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
-        </li>
-        <li>
-            Sota Kato, <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
-            "Generalized SAM: Efficient Fine-Tuning of SAM for Variable Input Image Sizes", 
-            <i>In Proceedings of the 18th European Conference on Computer Vision ECCV 2024 workshop (CADL)</i>, 
-            October, 2024, Milano, Italy (Oral).
-            <a href="https://arxiv.org/pdf/2408.12406.pdf" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
-        </li>
-      </ol>
     </div>
-
-    <h2>
-        <span class="lang-jp">📚 国内学会・シンポジウム</span>
-        <span class="lang-en">📚 Domestic Conferences</span>
-    </h2>
-    <div class="card">
-      <ol>
-        <li>坂井泰吾，<b><u>光岡 日菜子</u></b>, 堀田一弘, "検出・分類の二段階フレームワークによるキャベツの葉数推定～YOLOv12・ConvNeXtv2および合成データ・境界情報の活用～", ビジョン技術の実利用ワークショップ2025（ViEW2025）内：外観検査アルゴリズムコンテスト, 2025年12月, 神奈川横浜市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "SAM2の効率的追加学習による医用・細胞画像セグメンテーション", ビジョン技術の実利用ワークショップ2025（ViEW2025）, 2025年12月, 神奈川横浜市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "基盤モデルSAM2の医用画像適応に向けたAdapterの提案", 2025年度 日本生体医工学東海支部大会, 2025年11月, 愛知県名古屋市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 河野洋平, 堀田一弘, "効率的境界検出と最適輸送損失による時系列行動セグメンテーションの精度向上", 第28回情報論的学習理論ワークショップ（IBIS2025）, 2025年11月, 沖縄県那覇市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "Feedback Formerを用いた細胞画像セグメンテーションの精度向上", 令和七年度 電気・電子・情報関係学会東海支部連合大会 OS5「学生研究奨励賞【修士の部】による特別講演」, 2025年09月, 長野県長野市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "時系列行動セグメンテーションにおける汎用的性能向上のための行動境界識別用チャネル拡張手法の提案, 第24回情報科学技術フォーラム（FIT2025）, 2025年09月, 北海道札幌市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 荻野有加, 戸泉貴裕, 堀田一弘, "マルチタスク学習による弱教師あり赤外線小物体検出の精度向上及び安定化", 第28回画像の認識・理解シンポジウム（MIRU2025), 2025年07-08月, 京都府京都市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "マルチタスク学習による弱教師あり赤外線小物体セグメンテーションの精度向上及び安定化", 令和6年度 電子情報通信学会 総合大会, 2024年03月, 東京都世田谷区.</li>
-        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "ラベル不均衡な場合の医用画像セグメンテーションにおけるValidationデータ不要の損失関数設計", 医用画像情報学会 令和6年度201回大会, 2024年2月, 愛知県名古屋市.</li>
-        <!-- <li>坂井泰吾, <b><u>光岡 日菜子</u></b>, "YOLOv8を用いた分割領域毎の検出及び時系列情報を利用した追跡 ～オクルージョンと小物体検出に対応した時系列追跡アルゴリズム～", ビジョン技術の実利用ワークショップ2024（ViEW2024）内：外観検査アルゴリズムコンテスト, 2024年12月, 神奈川県横浜市.</li> -->
-        <li>横井悠人, 齋藤令次, <b><u>光岡 日菜子</u></b>, 堀田一弘, "Multiplicative loss functionを用いたセグメンテーションの精度向上", ビジョン技術の実利用ワークショップ2024（ViEW2024）, 2024年12月, 神奈川県横浜市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 高橋望, 久保田茜, 遠藤求, 堀田一弘, "ラベル不均衡な根毛画像データに対するセグメンテーション及び損失関数の最適化", ビジョン技術の実利用ワークショップ2024（ViEW2024）, 2024年12月, 神奈川県横浜市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 高橋望, 久保田茜, 遠藤求, 堀田一弘, "セマンティックセグメンテーションと1対1マッチングによる根毛の伸長過程の自動定量化", 令和六年度 電気・電子・情報関係学会東海支部連合大会, 2024年08月, 岐阜県岐阜市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "Feedback Formerを用いた細胞画像セグメンテーションの精度向上", 第27回画像の認識・理解シンポジウム（MIRU2024), 2024年08月, 熊本県熊本市.</li>
-        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "TransformerとFeedbackを用いた細胞画像セグメンテーションの精度向上", CVIM2024年5月研究会プログラム（CVIM第238回）, 2024年05月, 東京都目黒区.</li>
-      </ol>
-    </div>
-
-    <h2>
-        <span class="lang-jp">🎓 学位論文</span>
-        <span class="lang-en">🎓 Thesis</span>
-    </h2>
-    <div class="card">
-      <ul class="thesis-list">
-        <li>
-            <span class="lang-jp"><b>学士論文：</b></span>
-            <span class="lang-en"><b>Bachelor's Thesis:</b></span><br>
-            「TransformerとFeedbackを用いた細胞画像のセグメンテーション精度向上」
-        </li>
-      </ul>
-    </div>
-  </div>
 
   <div id="works" class="tab-content">
     <h2><span class="lang-jp">💻 開発・スキル</span><span class="lang-en">💻 Works & Skills</span></h2>
@@ -471,21 +363,27 @@
     <div class="card" style="text-align: center;">
         <p style="margin-bottom: 10px;"><strong>Languages & Libraries</strong></p>
         <a href="https://skillicons.dev">
-            <img src="https://skillicons.dev/icons?i=c,py,pytorch,opencv,sklearn,matlab,swift" style="max-width: 100%;" />
+            <img src="https://skillicons.dev/icons?i=c,py,pytorch,opencv,sklearn,matlab,swift" style="max-width: 100%;" loading="lazy" />
         </a>
 
         <p style="margin-top: 20px; margin-bottom: 10px;"><strong>Tools & Environments</strong></p>
         <a href="https://skillicons.dev">
-            <img src="https://skillicons.dev/icons?i=docker,linux,vscode,latex,md,ae,ai" style="max-width: 100%;" />
+            <img src="https://skillicons.dev/icons?i=docker,linux,vscode,latex,md,ae,ai" style="max-width: 100%;" loading="lazy" />
         </a>
     </div>
 
     <div class="search-container">
         <input type="text" id="work-search" class="search-input" placeholder="Search projects (e.g. iOS, Python, Web)..." onkeyup="filterWorks()">
+        <div style="margin-top: 10px;">
+            <button class="filter-btn" onclick="setSearch('iOS')">iOS</button>
+            <button class="filter-btn" onclick="setSearch('Web')">Web</button>
+            <button class="filter-btn" onclick="setSearch('AI')">AI</button>
+            <button class="filter-btn" onclick="setSearch('')">Clear</button>
+        </div>
     </div>
 
     <div class="card work-card">
-        <img src="Image/1024.png" alt="recolLe" class="work-icon">
+        <img src="Image/1024.png" alt="recolLe" class="work-icon" loading="lazy">
         <div class="work-content">
             <span class="work-title">recolLe (Web & iOS App)</span>
             <div class="skill-container" style="margin: 5px 0 10px;">
@@ -499,79 +397,35 @@
             <a href="https://apps.apple.com/jp/app/recolle-nfc-photo-album/id6755230226" target="_blank" class="badge-link"><i class="fab fa-app-store"></i> App Store</a>
         </div>
     </div>
-
-    <div class="card work-card">
-        <img src="Image/kozeniicon2.png" alt="おつりDoctor" class="work-icon">
-        <div class="work-content">
-            <span class="work-title">
-                <span class="lang-jp">おつりDoctor (iOS App)</span>
-                <span class="lang-en">Otsuri Doctor (iOS App)</span>
-            </span>
-            <div class="skill-container" style="margin: 5px 0 10px;">
-                <span class="skill-tag">iOS</span> <span class="skill-tag">AI</span>
-            </div>
-            <p>
-                <span class="lang-jp">小銭を並べてカメラで撮影すると、各種小銭の枚数や合計金額を計算可能。利用回数が増えることによる成長機能も搭載。</span>
-                <span class="lang-en">Calculate the number and total amount of coins simply by arranging them and taking a picture with the camera.</span>
-            </p>
-            <a href="https://apps.apple.com/jp/app/%E3%81%8A%E3%81%A4%E3%82%8Adoctor/id6755966828" target="_blank" class="badge-link"><i class="fab fa-app-store"></i> App Store</a>
-        </div>
+    
     </div>
-
-    <div class="card work-card">
-        <img src="Image/choukaizou_icon.png" alt="超kAI像" class="work-icon">
-        <div class="work-content">
-            <span class="work-title">
-                <span class="lang-jp">超kAI像 (iOS App)</span>
-                <span class="lang-en">Super kAI Image (iOS App)</span>
-            </span>
-            <div class="skill-container" style="margin: 5px 0 10px;">
-                <span class="skill-tag">iOS</span> <span class="skill-tag">AI</span>
-            </div>
-            <p>
-                <span class="lang-jp">AI超解像で写真を最大4倍に高精細化します。細部までくっきり、自然な仕上がりです！フォルダで賢く分類し、写真ごとにメモを保存できます。</span>
-                <span class="lang-en">Enhance photos up to 4x resolution using AI super-resolution technology. Sharp details with a natural finish!</span>
-            </p>
-            <a href="https://apps.apple.com/jp/app/%E8%B6%85kai%E8%94%B5/id6751739848" target="_blank" class="badge-link"><i class="fab fa-app-store"></i> App Store</a>
-        </div>
-    </div>
-
-    <div class="card work-card">
-        <img src="Image/kikonashi_icon.png" alt="kikonAshI" class="work-icon">
-        <div class="work-content">
-            <span class="work-title">kikonAshI (iOS App)</span>
-            <div class="skill-container" style="margin: 5px 0 10px;">
-                <span class="skill-tag">iOS</span> <span class="skill-tag">AI</span>
-            </div>
-            <p>
-                <span class="lang-jp">ファッションに特化したAIを独自開発。iPhoneで撮影した洋服の画像をもとに、最適なコーディネートをAIが提案。</span>
-                <span class="lang-en">Developed a specialized AI for fashion. Based on photos of clothes taken with an iPhone, the AI suggests optimal outfits.</span>
-            </p>
-            <a href="https://apps.apple.com/us/app/kikonashi/id6502258139" target="_blank" class="badge-link"><i class="fab fa-app-store"></i> App Store</a>
-        </div>
-    </div>
-
-  </div>
 
 </div>
 
 <footer>
-  © 2025 Hinako Mitsuoka 🍑
+  © 2025 Hinako Mitsuoka 🍑<br>
+  Built with Primer CSS & Peach-Jam Theme
 </footer>
 
 <script>
-  // === タブ切り替え機能 ===
-  function openTab(tabName) {
+  // === タブ切り替え機能 (修正版: 引数でボタン自身を受け取る) ===
+  function openTab(tabName, btnElement) {
+    // コンテンツの切り替え
     var contents = document.getElementsByClassName("tab-content");
     for (var i = 0; i < contents.length; i++) {
       contents[i].classList.remove("active");
     }
+    document.getElementById(tabName).classList.add("active");
+
+    // ボタンのアクティブ状態切り替え
     var btns = document.getElementsByClassName("tab-btn");
     for (var i = 0; i < btns.length; i++) {
       btns[i].classList.remove("active");
     }
-    document.getElementById(tabName).classList.add("active");
-    event.currentTarget.classList.add("active");
+    // 引数があればそれを使用、なければ検索して対応（互換性のため）
+    if (btnElement) {
+        btnElement.classList.add("active");
+    }
   }
 
   // === 言語切り替え機能 ===
@@ -595,6 +449,13 @@
             cards[i].style.display = "none";
         }
     }
+  }
+
+  // === ボタンフィルター用ヘルパー ===
+  function setSearch(keyword) {
+      var input = document.getElementById('work-search');
+      input.value = keyword;
+      filterWorks();
   }
 </script>
 
