@@ -10,25 +10,16 @@
   <link rel="stylesheet" href="https://unpkg.com/@primer/css@20.4.4/dist/primer.css">
 
   <style>
-    /* === 🍑 Peach-Jam Theme Definition === */
+    /* === 🍑 Peach-Jam Theme === */
     :root {
-      /* 背景色: 真っ白より目に優しいスノーホワイト */
       --bg: #fffbfd;
-      /* カード背景 */
       --surface: #ffffff;
-      /* 文字色: 柔らかいチャコールグレー */
       --text: #4a4a4a;
       --text-main: #2d2d2d;
       --muted: #998a8d;
-      
-      /* アクセントカラー: 桃色 */
       --accent: #ff8ba7;
       --accent-strong: #ff5c8d; 
-      
-      /* 枠線: 非常に薄いピンク */
       --stroke: #ffe6ee;
-      
-      /* ヘッダーのグラデーション */
       --header-bg: linear-gradient(135deg, #fff0f5 0%, #ffe6ee 100%);
     }
 
@@ -38,19 +29,59 @@
       color: var(--text);
       margin: 0;
       padding: 0;
+      transition: background-color 0.3s;
     }
+
+    /* === Language Toggle Logic (重要) === */
+    /* data-lang="jp" の時は .lang-en を隠す */
+    body[data-lang="jp"] .lang-en { display: none !important; }
+    /* data-lang="en" の時は .lang-jp を隠す */
+    body[data-lang="en"] .lang-jp { display: none !important; }
 
     /* === Layout === */
     .page { max-width: 1000px; margin: 0 auto; padding: 20px; }
 
-    /* === Header === */
+    /* === Header & Lang Button === */
     header {
       background: var(--header-bg);
       padding: 40px 20px;
-      border-radius: 0 0 20px 20px; /* 下だけ丸く */
+      border-radius: 0 0 20px 20px;
       margin-bottom: 30px;
       text-align: center;
+      position: relative; /* 言語ボタンの配置用 */
     }
+    
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 5px;
+      display: flex;
+      gap: 5px;
+      backdrop-filter: blur(4px);
+    }
+    
+    .lang-btn {
+      border: none;
+      background: none;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: var(--accent-strong);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    /* 選択中の言語ボタンのスタイル */
+    .lang-btn.active {
+      background: var(--accent-strong);
+      color: white;
+    }
+
     h1 { font-size: 2.5rem; color: var(--text-main); margin: 0; }
     .subtitle { color: var(--muted); margin-top: 10px; font-weight: 500; }
     
@@ -61,24 +92,25 @@
     .tab-nav {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      flex-wrap: wrap; /* スマホで折り返し */
+      gap: 10px;
       margin-bottom: 30px;
       position: sticky;
       top: 10px;
       z-index: 100;
-      backdrop-filter: blur(5px); /* すりガラス効果 */
     }
 
     .tab-btn {
-      background: var(--surface);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid var(--stroke);
-      padding: 10px 30px;
+      padding: 10px 24px;
       border-radius: 30px;
       cursor: pointer;
       font-weight: bold;
       color: var(--muted);
       transition: all 0.3s ease;
       box-shadow: 0 4px 6px rgba(255, 139, 167, 0.1);
+      backdrop-filter: blur(5px);
     }
 
     .tab-btn.active {
@@ -89,13 +121,12 @@
       box-shadow: 0 6px 12px rgba(255, 139, 167, 0.3);
     }
 
-    /* === Content Sections === */
+    /* === Content === */
     .tab-content { display: none; animation: fadeIn 0.5s; }
     .tab-content.active { display: block; }
-
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* === Card Design (論文リストなど) === */
+    /* === Cards === */
     .card {
       background: var(--surface);
       border: 1px solid var(--stroke);
@@ -109,30 +140,36 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.05);
       border-color: var(--accent);
     }
-    .card-title { font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; display: block; text-decoration: none; }
-    .card-meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; }
-    
+    .card-title { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; display: block; text-decoration: none; }
+    .card-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
     .tag {
-      display: inline-block;
-      padding: 3px 10px;
-      font-size: 0.75rem;
-      border-radius: 20px;
-      background: #fff0f5;
-      color: var(--accent-strong);
-      margin-right: 5px;
+      display: inline-block; padding: 3px 10px; font-size: 0.75rem;
+      border-radius: 20px; background: #fff0f5; color: var(--accent-strong); margin-right: 5px; margin-bottom: 6px;
     }
-
-    /* === Footer === */
+    
     footer { text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem; }
   </style>
 </head>
-<body>
+
+<body data-lang="jp">
 
 <div class="page">
   
   <header>
-    <h1>Hinako Mitsuoka 🍑</h1>
-    <div class="subtitle">Master's Student at Meijo University / CV & PRML</div>
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-jp" onclick="setLang('jp')">JP</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+
+    <h1>
+      <span class="lang-jp">光岡 日菜子 🍑</span>
+      <span class="lang-en">Hinako Mitsuoka 🍑</span>
+    </h1>
+    <div class="subtitle">
+      <span class="lang-jp">名城大学大学院 / CV & PRML</span>
+      <span class="lang-en">Master's Student at Meijo University / CV & PRML</span>
+    </div>
+    
     <div class="social-links">
       <a href="https://github.com/ppppeach-jam">GitHub</a>
       <a href="https://twitter.com/YOUR_ID">X (Twitter)</a>
@@ -141,53 +178,71 @@
   </header>
 
   <nav class="tab-nav">
-    <button class="tab-btn active" onclick="openTab('publications')">Publications (研究)</button>
-    <button class="tab-btn" onclick="openTab('projects')">Projects (開発・活動)</button>
-    <button class="tab-btn" onclick="openTab('profile')">Profile (経歴)</button>
+    <button class="tab-btn active" onclick="openTab('profile')">Profile</button>
+    <button class="tab-btn" onclick="openTab('achievements')">Achievements</button>
+    <button class="tab-btn" onclick="openTab('publications')">Publications</button>
+    <button class="tab-btn" onclick="openTab('works')">Works</button>
   </nav>
 
-  <div id="publications" class="tab-content active">
+  <div id="profile" class="tab-content active">
+    <h2 style="color: var(--accent-strong);">Biography</h2>
+    <div class="card">
+      <ul style="line-height: 1.8; color: var(--text); padding-left: 20px;">
+        <li>
+          <b>2024.04 - <span class="lang-jp">現在</span><span class="lang-en">Present</span></b>: 
+          <span class="lang-jp">名城大学大学院 理工学研究科 電気電子工学専攻（修士課程）</span>
+          <span class="lang-en">Graduate School of Science and Engineering, Meijo University (Master's Course)</span>
+        </li>
+        <li>
+          <b>2024.04 - <span class="lang-jp">現在</span><span class="lang-en">Present</span></b>: 
+          <span class="lang-jp">名古屋CV・PRML勉強会 幹事</span>
+          <span class="lang-en">Organizer of Nagoya CV/PRML Seminar</span>
+        </li>
+        <li>
+          <b>2020.04 - 2024.03</b>: 
+          <span class="lang-jp">名城大学 理工学部 電気電子工学科 (学士)</span>
+          <span class="lang-en">Department of Electrical and Electronic Engineering, Meijo University (Bachelor)</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="achievements" class="tab-content">
+    <h2 style="color: var(--accent-strong);">Awards & Honors</h2>
+    <div class="card">
+      <span class="tag">Award</span>
+      <div class="card-title">
+        <span class="lang-jp">ViEW2024 外観検査アルゴリズムコンテスト 最優秀賞</span>
+        <span class="lang-en">ViEW2024 Visual Inspection Algorithm Contest: Best Award</span>
+      </div>
+      <div class="card-meta">Dec 2024</div>
+    </div>
+  </div>
+
+  <div id="publications" class="tab-content">
     <h2 style="color: var(--accent-strong);">Research Papers</h2>
     
     <div class="card">
-      <span class="tag">DC1申請</span> <span class="tag">TAS</span>
+      <span class="tag">DC1 Application</span> <span class="tag">TAS</span>
       <a href="#" class="card-title">Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation</a>
       <div class="card-meta">Dec 2025 (In Preparation)</div>
-      <p>時間的行動分割(TAS)において、過剰分割を防ぐための新たな損失関数を提案。</p>
-    </div>
-
-    <div class="card">
-      <span class="tag">Intership</span> <span class="tag">Biometrics</span>
-      <div class="card-title">Research at NEC Biometrics Research Laboratories</div>
-      <div class="card-meta">Aug 2024 - Sep 2024</div>
-      <p>NECバイオメトリクス研究所での研究インターンシップ成果。</p>
+      <p>
+        <span class="lang-jp">時間的行動分割(TAS)において、過剰分割を防ぐための新たな損失関数を提案。</span>
+        <span class="lang-en">Proposed a novel loss function to prevent over-segmentation in Temporal Action Segmentation (TAS).</span>
+      </p>
     </div>
   </div>
 
-  <div id="projects" class="tab-content">
-    <h2 style="color: var(--accent-strong);">Works & Activities</h2>
+  <div id="works" class="tab-content">
+    <h2 style="color: var(--accent-strong);">Projects & Activities</h2>
     
     <div class="card">
-      <span class="tag">Organizer</span>
-      <div class="card-title">名古屋CV・PRML勉強会 幹事</div>
-      <p>2024年4月から幹事として勉強会の運営・企画を担当。</p>
-    </div>
-
-    <div class="card">
       <span class="tag">Blog</span>
-      <div class="card-title">Note記事執筆</div>
-      <p>研究生活や技術的な知見をNoteにて発信中。</p>
-    </div>
-  </div>
-
-  <div id="profile" class="tab-content">
-    <h2 style="color: var(--accent-strong);">Biography</h2>
-    <div class="card">
-      <h3>Education</h3>
-      <ul style="line-height: 1.8; color: var(--text);">
-        <li><b>2024.04 - 現在</b>: 名城大学大学院 理工学研究科 電気電子工学専攻（修士課程）</li>
-        <li><b>2020.04 - 2024.03</b>: 名城大学 理工学部 電気電子工学科 (学士)</li>
-      </ul>
+      <div class="card-title">Note Blog</div>
+      <p>
+        <span class="lang-jp">研究生活や技術的な知見をNoteにて発信中。</span>
+        <span class="lang-en">Writing articles about research life and technical insights on Note.</span>
+      </p>
     </div>
   </div>
 
@@ -198,25 +253,28 @@
 </footer>
 
 <script>
-  // タブ切り替え用のシンプルなJavaScript
+  // === タブ切り替え機能 ===
   function openTab(tabName) {
-    // 1. すべてのコンテンツを隠す
     var contents = document.getElementsByClassName("tab-content");
     for (var i = 0; i < contents.length; i++) {
       contents[i].classList.remove("active");
     }
-    
-    // 2. すべてのボタンの active クラスを外す
     var btns = document.getElementsByClassName("tab-btn");
     for (var i = 0; i < btns.length; i++) {
       btns[i].classList.remove("active");
     }
-
-    // 3. 選択されたコンテンツを表示し、ボタンを active にする
     document.getElementById(tabName).classList.add("active");
-    
-    // クリックされたボタンを特定して active にする（event.currentTargetを使う）
     event.currentTarget.classList.add("active");
+  }
+
+  // === 言語切り替え機能 ===
+  function setLang(lang) {
+    // bodyの属性を書き換える（CSSが反応して表示が切り替わる）
+    document.body.setAttribute('data-lang', lang);
+    
+    // ボタンの見た目を変える
+    document.getElementById('btn-jp').classList.toggle('active', lang === 'jp');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   }
 </script>
 
