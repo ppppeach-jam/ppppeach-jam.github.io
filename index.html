@@ -1,257 +1,223 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>光岡日菜子 / Hinako Mitsuoka</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Hinako Mitsuoka | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@primer/css@20.4.4/dist/primer.css">
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
+    /* === 🍑 Peach-Jam Theme Definition === */
+    :root {
+      /* 背景色: 真っ白より目に優しいスノーホワイト */
+      --bg: #fffbfd;
+      /* カード背景 */
+      --surface: #ffffff;
+      /* 文字色: 柔らかいチャコールグレー */
+      --text: #4a4a4a;
+      --text-main: #2d2d2d;
+      --muted: #998a8d;
+      
+      /* アクセントカラー: 桃色 */
+      --accent: #ff8ba7;
+      --accent-strong: #ff5c8d; 
+      
+      /* 枠線: 非常に薄いピンク */
+      --stroke: #ffe6ee;
+      
+      /* ヘッダーのグラデーション */
+      --header-bg: linear-gradient(135deg, #fff0f5 0%, #ffe6ee 100%);
+    }
+
     body {
-      padding-top: 70px;
-      font-family: 'Noto Sans JP', sans-serif;
-      background-color: #fdf6f9;
+      font-family: "Lato", "Noto Sans JP", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
     }
-    h1 {
-      color: #b65775;
-      font-size: 2rem;
-    }
-    h2 {
-      border-bottom: 2px solid #f8a3c4;
-      padding-bottom: 0.3em;
-      margin-top: 2em;
-      color: #b65775;
-      font-size: 1.5rem;
-    }
-    footer {
-      background: #fce4ec;
-      padding: 1em;
+
+    /* === Layout === */
+    .page { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+    /* === Header === */
+    header {
+      background: var(--header-bg);
+      padding: 40px 20px;
+      border-radius: 0 0 20px 20px; /* 下だけ丸く */
+      margin-bottom: 30px;
       text-align: center;
-      font-size: 0.9em;
     }
-    html {
-      scroll-behavior: smooth;
-    }
-    .peach-jam {
-      display: inline-block;
-      animation: peachSwing 1.6s ease-in-out infinite;
-    }
+    h1 { font-size: 2.5rem; color: var(--text-main); margin: 0; }
+    .subtitle { color: var(--muted); margin-top: 10px; font-weight: 500; }
     
-    @keyframes peachSwing {
-      0%, 100% { transform: rotate(0deg); }
-      25%      { transform: rotate(5deg); }
-      75%      { transform: rotate(-5deg); }
+    .social-links { margin-top: 15px; }
+    .social-links a { margin: 0 10px; color: var(--accent-strong); text-decoration: none; font-weight: bold; }
+
+    /* === Tabs Navigation === */
+    .tab-nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      backdrop-filter: blur(5px); /* すりガラス効果 */
     }
 
-    /* 言語切り替え用のスタイル */
-    .lang-en {
-      display: none;
-    }
-    /* 言語切り替えボタンの見た目 */
-    .lang-switch-btn {
-        cursor: pointer;
-        color: white !important;
-        font-weight: bold;
-        border: 1px solid white;
-        padding: 5px 10px;
-        border-radius: 5px;
-        margin-left: 10px;
-    }
-    .lang-switch-btn:hover {
-        background-color: rgba(255,255,255,0.2);
-        text-decoration: none;
+    .tab-btn {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      padding: 10px 30px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--muted);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(255, 139, 167, 0.1);
     }
 
-    /* プロフィールリストの整列（修正版） */
-    .profile-item {
-        margin-bottom: 0.5rem;
+    .tab-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255, 139, 167, 0.3);
     }
-    .profile-date {
-        font-weight: bold;
-        color: #888;
-        /* PC画面では右寄せ、スマホでは左寄せ */
+
+    /* === Content Sections === */
+    .tab-content { display: none; animation: fadeIn 0.5s; }
+    .tab-content.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* === Card Design (論文リストなど) === */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    @media (min-width: 768px) {
-        .profile-date {
-            text-align: right;
-        }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      border-color: var(--accent);
     }
+    .card-title { font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; display: block; text-decoration: none; }
+    .card-meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; }
+    
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      border-radius: 20px;
+      background: #fff0f5;
+      color: var(--accent-strong);
+      margin-right: 5px;
+    }
+
+    /* === Footer === */
+    footer { text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem; }
   </style>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<a id="top" style="position: relative; top: -70px;"></a>
 
-
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #d88fa2;">
-  <a class="navbar-brand" href="#">
-    <span class="peach-jam">🍑</span> Hinako Mitsuoka
-  </a>
+<div class="page">
   
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <header>
+    <h1>Hinako Mitsuoka 🍑</h1>
+    <div class="subtitle">Master's Student at Meijo University / CV & PRML</div>
+    <div class="social-links">
+      <a href="https://github.com/ppppeach-jam">GitHub</a>
+      <a href="https://twitter.com/YOUR_ID">X (Twitter)</a>
+      <a href="mailto:ppppeach.jam@gmail.com">Email</a>
+    </div>
+  </header>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto align-items-center">
-      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="achievements.html">Achievements</a></li>
-      <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
-      <li class="nav-item"><a class="nav-link" href="products.html">Works</a></li>
-      
-      <li class="nav-item">
-        <span class="nav-link lang-switch-btn" onclick="toggleLanguage()">JP / EN</span>
-      </li>
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="openTab('publications')">Publications (研究)</button>
+    <button class="tab-btn" onclick="openTab('projects')">Projects (開発・活動)</button>
+    <button class="tab-btn" onclick="openTab('profile')">Profile (経歴)</button>
+  </nav>
 
-      <li class="nav-item d-flex mt-2 mt-lg-0 ml-lg-3 align-items-center">
-          <a href="https://nagoyacv.connpass.com/" target="_blank" class="mr-3 mr-lg-2">
-            <img src="Image/connpass.png" width="24" height="24" alt="Connpass">
-          </a>
-          <a href="https://x.com/ramentabetai__1" target="_blank" class="mr-3 mr-lg-2">
-            <img src="https://cdn.simpleicons.org/x/white" width="24" height="24" alt="X">
-          </a>
-          <a href="https://github.com/ppppeach-jam" target="_blank" class="mr-3 mr-lg-2">
-            <img src="https://cdn.simpleicons.org/github/white" width="24" height="24" alt="GitHub">
-          </a>
-          <a href="https://scholar.google.com/citations?user=SODa45gAAAAJ&hl=en" target="_blank" class="mr-3 mr-lg-2">
-            <img src="https://cdn.simpleicons.org/googlescholar/white" width="24" height="24" alt="Google Scholar">
-          </a>
-          <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank">
-            <i class="fas fa-flask text-white" style="font-size: 24px;"></i>
-          </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <div id="publications" class="tab-content active">
+    <h2 style="color: var(--accent-strong);">Research Papers</h2>
+    
+    <div class="card">
+      <span class="tag">DC1申請</span> <span class="tag">TAS</span>
+      <a href="#" class="card-title">Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation</a>
+      <div class="card-meta">Dec 2025 (In Preparation)</div>
+      <p>時間的行動分割(TAS)において、過剰分割を防ぐための新たな損失関数を提案。</p>
+    </div>
 
-<main class="container">
-  <h1>光岡日菜子 / Hinako Mitsuoka</h1>
-  <p class="text-muted">Master's Student of Electrical and Electronic Engineering</p>
-
-  <h2>
-    <span class="lang-ja">経歴</span>
-    <span class="lang-en">Profile</span>
-  </h2>
-  
-  <div class="lang-ja">
-      <div class="row profile-item">
-          <div class="col-md-2 profile-date">2024.04 ~ 現在</div>
-          <div class="col-md-10">名城大学大学院 理工学研究科 電気電子工学専攻（博士前期課程）</div>
-      </div>
-      <div class="row profile-item">
-          <div class="col-md-2 profile-date">2024.04 ~ 現在</div>
-          <div class="col-md-10">名古屋CV・PRML勉強会 幹事</div>
-      </div>
-      <div class="row profile-item">
-          <div class="col-md-2 profile-date">2024.08 ~ 2024.09</div>
-          <div class="col-md-10">NEC バイオメトリクス研究所 研究インターンシップ</div>
-      </div>
-      <div class="row profile-item">
-          <div class="col-md-2 profile-date">2020.04 ~ 2024.03</div>
-          <div class="col-md-10">名城大学 理工学部 電気電子工学科 (学士)</div>
-      </div>
+    <div class="card">
+      <span class="tag">Intership</span> <span class="tag">Biometrics</span>
+      <div class="card-title">Research at NEC Biometrics Research Laboratories</div>
+      <div class="card-meta">Aug 2024 - Sep 2024</div>
+      <p>NECバイオメトリクス研究所での研究インターンシップ成果。</p>
+    </div>
   </div>
 
-  <div class="lang-en">
-      <div class="row profile-item">
-          <div class="col-md-2 profile-date">2024.04 ~ Current</div>
-          <div class="col-md-10">Department of Electrical and Electronic Engineering, Graduate School of Science and Engineering, Meijo University (Master of Engineering)</div>
-      </div>
-      <div class="row profile-item">
-          <div class="col-md-2 profile-date">2024.04 ~ Current</div>
-          <div class="col-md-10">Nagoya CVPRML Seminar Organizer</div>
-      </div>
-      <div class="row profile-item">
-          <div class="col-md-2 profile-date">2024.08 ~ 2024.09</div>
-          <div class="col-md-10">NEC Biometrics Research Laboratories, Research Internship</div>
-      </div>
-      <div class="row profile-item">
-          <div class="col-md-2 profile-date">2020.04 ~ 2024.03</div>
-          <div class="col-md-10">Department of Electrical and Electronic Engineering, Faculty of Engineering, Meijo University (Bachelor of Engineering)</div>
-      </div>
+  <div id="projects" class="tab-content">
+    <h2 style="color: var(--accent-strong);">Works & Activities</h2>
+    
+    <div class="card">
+      <span class="tag">Organizer</span>
+      <div class="card-title">名古屋CV・PRML勉強会 幹事</div>
+      <p>2024年4月から幹事として勉強会の運営・企画を担当。</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Blog</span>
+      <div class="card-title">Note記事執筆</div>
+      <p>研究生活や技術的な知見をNoteにて発信中。</p>
+    </div>
   </div>
 
-<h2>
-      <span class="lang-ja">所属学会</span>
-      <span class="lang-en">Memberships</span>
-  </h2>
-  <ul>
-      <li>
-          <span class="lang-ja">IEEE Student Member</span>
-          <span class="lang-en">IEEE Student Member</span>
-      </li>
-      <li>
-          <span class="lang-ja">電子情報通信学会 学生員</span>
-          <span class="lang-en">The Institute of Electronics, Information and Communication Engineers (IEICE) Student Member</span>
-      </li>
-  </ul>
-  
-  <h2>
-    <span class="lang-ja">その他の活動</span>
-    <span class="lang-en">Other Activities</span>
-  </h2>
-  
-  <ul>
-    <li>Program Committee Member,&nbsp;&nbsp;The 40th Annual AAAI Conference on Artificial Intelligence（AAAI2026) </li>
-    <li>
-      <span class="lang-ja">CVPR2025 Report作成協力</span>
-      <span class="lang-en">CVPR2025 Report Contributor</span>
-       URL: <a href="https://t.co/OZQ3l2Pnc5" target="_blank">https://t.co/OZQ3l2Pnc5</a>
-    </li>
-    <li>Reviewer,&nbsp;&nbsp;IEEE/CVF International Conference on Computer Vision（ICCV2025）Workshop（HiCV）</li>
-    <li>Technical Program Committee Member,&nbsp;&nbsp;European Conference on Computer Vision（ECCV2024）Workshop（HCV）</li>
-    <li>
-        <span class="lang-ja">運営委員,&nbsp;&nbsp;2023年度 名古屋大学拠点AI-MAILs x 東北大学拠点ClinicalAI 第3回合同シンポジウム</span>
-        <span class="lang-en">Organizing Committee,&nbsp;&nbsp;3rd Joint Symposium of Nagoya Univ. AI-MAILs x Tohoku Univ. ClinicalAI (2023)</span>
-    </li>
-  </ul>
+  <div id="profile" class="tab-content">
+    <h2 style="color: var(--accent-strong);">Biography</h2>
+    <div class="card">
+      <h3>Education</h3>
+      <ul style="line-height: 1.8; color: var(--text);">
+        <li><b>2024.04 - 現在</b>: 名城大学大学院 理工学研究科 電気電子工学専攻（修士課程）</li>
+        <li><b>2020.04 - 2024.03</b>: 名城大学 理工学部 電気電子工学科 (学士)</li>
+      </ul>
+    </div>
+  </div>
 
-  
-  <h2>Contact</h2>
-  <p>
-    Email(Univ):&nbsp;<a href="mailto:200442165@ccalumni.meijo-u.ac.jp">200442165@ccalumni.meijo-u.ac.jp</a><br>
-    Email(Private):&nbsp;<a href="mailto:ppppeach.jam@gmail.com">ppppeach.jam@gmail.com</a>
-  </p>
-  <p style="color: #6c757d; font-size: 0.9em;">
-    <span class="lang-ja">〒468-8502 愛知県名古屋市天白区塩釜口1-501<br>Meijo University, 1-501 Shiogamaguchi, Tempaku-ku, Nagoya, Aichi 468-8502, Japan</span>
-    <span class="lang-en">Meijo University, 1-501 Shiogamaguchi, Tempaku-ku, Nagoya, Aichi 468-8502, Japan</span>
-  </p>
-</main>
+</div>
 
-<footer class="page-footer bg-light border text-center py-3">
-  <a href="#top">▲ <span class="lang-ja">一番上に戻る</span><span class="lang-en">Top</span></a><br>
-  © 2025 Hinako Mitsuoka 🍑
+<footer>
+  © 2025 Hinako Mitsuoka
 </footer>
 
 <script>
-    let currentLang = localStorage.getItem('siteLang') || 'ja';
-
-    document.addEventListener("DOMContentLoaded", function() {
-        applyLanguage(currentLang);
-    });
-
-    function toggleLanguage() {
-        currentLang = (currentLang === 'ja') ? 'en' : 'ja';
-        applyLanguage(currentLang);
-        localStorage.setItem('siteLang', currentLang);
+  // タブ切り替え用のシンプルなJavaScript
+  function openTab(tabName) {
+    // 1. すべてのコンテンツを隠す
+    var contents = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < contents.length; i++) {
+      contents[i].classList.remove("active");
+    }
+    
+    // 2. すべてのボタンの active クラスを外す
+    var btns = document.getElementsByClassName("tab-btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.remove("active");
     }
 
-    function applyLanguage(lang) {
-        var jaElements = document.getElementsByClassName('lang-ja');
-        var enElements = document.getElementsByClassName('lang-en');
-
-        if (lang === 'ja') {
-            for (var i = 0; i < jaElements.length; i++) jaElements[i].style.display = 'block';
-            for (var i = 0; i < enElements.length; i++) enElements[i].style.display = 'none';
-        } else {
-            for (var i = 0; i < jaElements.length; i++) jaElements[i].style.display = 'none';
-            for (var i = 0; i < enElements.length; i++) enElements[i].style.display = 'block';
-        }
-    }
+    // 3. 選択されたコンテンツを表示し、ボタンを active にする
+    document.getElementById(tabName).classList.add("active");
+    
+    // クリックされたボタンを特定して active にする（event.currentTargetを使う）
+    event.currentTarget.classList.add("active");
+  }
 </script>
 
 </body>
