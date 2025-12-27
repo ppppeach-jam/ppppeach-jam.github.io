@@ -807,6 +807,26 @@
       input.value = keyword;
       filterWorks();
   }
+
+  // === Scroll to Top 機能 ===
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', () => {
+      // 300px以上スクロールしたらボタンを表示
+      if (window.scrollY > 300) {
+          backToTopBtn.classList.add('show');
+      } else {
+          backToTopBtn.classList.remove('show');
+      }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+      // スムーズにトップへ戻る
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });
 </script>
 
 </body>
