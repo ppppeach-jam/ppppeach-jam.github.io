@@ -19,15 +19,17 @@
   <style>
     /* === 🍑 Peach-Jam Theme === */
     :root {
-      --bg: #fffbfd;
-      --surface: #ffffff;
-      --text: #4a4a4a;
-      --text-main: #2d2d2d;
-      --muted: #998a8d;
-      --accent: #ff8ba7;
-      --accent-strong: #ff5c8d; 
-      --stroke: #ffe6ee;
-      --header-bg: linear-gradient(135deg, #fff0f5 0%, #ffe6ee 100%);
+      --bg: #fdfcf8;
+      --surface: #fffbf6;
+      --text: #5c5250;
+      --text-main: #4a4240;
+      --muted: #9e908c;
+      --accent: #fa8c7a;
+      --accent-strong: #e86c5a; 
+      --accent-yellow: #f2c968;
+      --stroke: #f2e6df;
+      --header-bg: linear-gradient(120deg, #fff8e1 0%, #ffe0d1 50%, #fab3a3 100%);
+      --gradient-peach: linear-gradient(to right, var(--accent-strong), var(--accent-yellow));
     }
 
     body {
@@ -50,11 +52,12 @@
     /* === Header === */
     header {
       background: var(--header-bg);
-      padding: 40px 20px;
-      border-radius: 0 0 20px 20px;
+      padding: 50px 20px;
+      border-radius: 0 0 25px 25px;
       margin-bottom: 30px;
       text-align: center;
       position: relative;
+      box-shadow: 0 4px 20px rgba(232, 108, 90, 0.15);
     }
     
     .profile-img {
@@ -121,7 +124,7 @@
     }
 
     .tab-btn {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 253, 248, 0.9);
       border: 1px solid var(--stroke);
       padding: 10px 24px;
       border-radius: 30px;
@@ -134,12 +137,13 @@
     }
 
     .tab-btn:hover {
-        background: #fff0f5;
+        background: #fff8e8;
         color: var(--accent-strong);
+        border-color: var(--accent-yellow);
     }
 
     .tab-btn.active {
-      background: var(--accent);
+      background: var(--accent-strong);
       color: white;
       border-color: var(--accent);
       transform: translateY(-2px);
@@ -155,112 +159,153 @@
     .card {
       background: var(--surface);
       border: 1px solid var(--stroke);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(255, 92, 141, 0.1);
-      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(232, 108, 90, 0.15);
+      border-color: var(--accent-yellow);
     }
     
     h2 {
       border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.3em;
-      margin-top: 1.5em;
-      margin-bottom: 1em;
+      padding-bottom: 0.4em;
+      margin-top: 1.8em;
+      margin-bottom: 1.2em;
       color: var(--accent-strong);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
+      border-bottom: none;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%; 
+        height: 3px;
+        background: var(--gradient-peach);
+        border-radius: 2px;
     }
 
     h3 {
-        font-size: 1.1rem;
-        color: var(--muted);
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-left: 4px solid var(--accent);
-        padding-left: 10px;
+        font-size: 1.15rem;
+        color: var(--text-main);
+        margin-top: 15px;
+        margin-bottom: 12px;
+        border-left: 4px solid var(--accent-yellow); 
+        padding-left: 12px;
     }
 
     /* === Badge Styles === */
     .badge-pdf, .badge-link {
         background-color: var(--accent-strong);
         color: white !important;
-        padding: 4px 12px;
-        border-radius: 15px;
+        padding: 4px 14px;
+        border-radius: 20px;
         font-size: 0.85em;
         text-decoration: none;
         margin-left: 8px;
-        transition: all 0.2s;
+        transition: all 0.3s;
         display: inline-flex;
         align-items: center;
         gap: 5px;
         border: 1px solid var(--accent-strong);
+        font-weight: 600;
     }
     .badge-link {
         background-color: white;
         color: var(--accent-strong) !important;
     }
-    .badge-pdf:hover, .badge-link:hover {
-        background-color: white;
+    .badge-link {
+        background-color: transparent;
         color: var(--accent-strong) !important;
-        box-shadow: 0 2px 5px rgba(255, 92, 141, 0.3);
+        border-color: var(--stroke);
     }
-    .badge-link:hover { background-color: var(--accent-strong); color: white !important; }
-    .badge-pdf:hover { background-color: white; color: var(--accent-strong) !important; }
+    .badge-pdf:hover, .badge-link:hover {
+        background-color: var(--accent-yellow);
+        color: var(--text-main) !important;
+        border-color: var(--accent-yellow);
+        box-shadow: 0 3px 8px rgba(242, 201, 104, 0.4);
+        transform: translateY(-1px);
+    }
 
     /* Lists */
     ol, ul { padding-left: 1.4em; color: var(--text-main); }
-    li { margin-bottom: 1.2em; line-height: 1.7; }
+    li { margin-bottom: 1.2em; line-height: 1.75; }
     ul li::marker, ol li::marker { color: var(--accent-strong); font-weight: bold; }
+    @supports (-webkit-background-clip: text) {
+        ul li::marker {
+            background: var(--gradient-peach);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
 
     /* === Works Tab Specific === */
-    .search-container { margin-bottom: 20px; text-align: center; }
+    .search-container { margin-bottom: 25px; text-align: center; }
     .search-input {
-        width: 100%; max-width: 400px; padding: 12px 20px;
-        border-radius: 25px; border: 2px solid var(--stroke);
-        font-size: 1rem; outline: none; transition: border-color 0.3s;
-        background: rgba(255,255,255,0.8);
+        width: 100%; max-width: 450px; padding: 14px 24px;
+        border-radius: 30px; border: 2px solid var(--stroke);
+        font-size: 1rem; outline: none; transition: all 0.3s;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--text-main);
     }
-    .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,139,167,0.1); }
+    .search-input:focus { 
+        border-color: var(--accent-yellow); 
+        box-shadow: 0 0 0 4px rgba(242, 201, 104, 0.2);
+        background: white;
+    }
     
     .filter-btn {
-        background: white; border: 1px solid var(--stroke); color: var(--text-main);
-        padding: 6px 14px; border-radius: 20px; cursor: pointer; margin: 0 4px;
-        font-size: 0.9rem; transition: all 0.2s;
+        background: var(--surface); border: 1px solid var(--stroke); color: var(--muted);
+        padding: 8px 16px; border-radius: 20px; cursor: pointer; margin: 0 5px;
+        font-size: 0.9rem; transition: all 0.2s; font-weight: 600;
     }
     .filter-btn:hover, .filter-btn.active {
-        background: #fff0f5; border-color: var(--accent); color: var(--accent-strong);
+        background: #fff8e8; /* 薄い黄色 */
+        border-color: var(--accent-yellow); 
+        color: var(--accent-strong);
     }
 
-    .work-card { display: flex; flex-direction: column; gap: 20px; }
+    .work-card { display: flex; flex-direction: column; gap: 24px; }
     @media (min-width: 600px) { .work-card { flex-direction: row; align-items: start; } }
     
     .work-icon {
-        width: 100px; height: 100px; object-fit: cover;
-        border-radius: 22px; border: 1px solid var(--stroke);
+        width: 110px; height: 110px; object-fit: cover;
+        border-radius: 24px; border: 1px solid var(--stroke);
         flex-shrink: 0; margin: 0 auto;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 8px 16px rgba(232, 108, 90, 0.1);
+        transition: transform 0.3s;
     }
+    .work-card:hover .work-icon { transform: scale(1.03); }
     @media (min-width: 600px) { .work-icon { margin: 0; } }
 
     .work-content { flex: 1; }
     .work-title {
-        font-size: 1.25rem; font-weight: 700; color: var(--accent-strong); margin-bottom: 5px; display: block;
+        font-size: 1.35rem; font-weight: 700; color: var(--accent-strong); margin-bottom: 8px; display: block;
     }
 
-    .skill-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; margin-bottom: 20px; }
+    .skill-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; margin-bottom: 20px; }
     .skill-tag {
-        background-color: #fff0f5; color: var(--text-main);
-        border: 1px solid var(--stroke); padding: 5px 12px;
-        border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+        background-color: #fff8e8; 
+        color: var(--text-main);
+        border: 1px solid #f5ebd0; 
+        padding: 6px 14px;
+        border-radius: 8px; font-size: 0.85rem; font-weight: 600;
         display: flex; align-items: center; gap: 6px;
     }
-    .skill-tag i { color: var(--accent-strong); }
+    .skill-tag i { color: var(--accent-yellow);  }
 
-    footer { text-align: center; padding: 50px 20px; color: var(--muted); font-size: 0.9rem; margin-top: 40px; border-top: 1px solid var(--stroke); }
+    footer { 
+        text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.95rem; margin-top: 50px; 
+        border-top: none;
+        background: linear-gradient(to top, #fff8e1 0%, var(--bg) 100%);
+    }
   </style>
 </head>
 
@@ -327,7 +372,7 @@
       </ul>
     </div>
 
-    <h2><span class="lang-jp">学会活動・その他</span><span class="lang-en">Academic Activities</span></h2>
+    <h2><span class="lang-jp">ボランティア・その他</span><span class="lang-en"> Other Activities</span></h2>
     <div class="card">
         <ul style="line-height: 1.6;">
             <li>
