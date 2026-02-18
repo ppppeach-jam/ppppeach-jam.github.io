@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>光岡日菜子 / Hinako Mitsuoka</title>
+  <meta name="description" content="光岡日菜子のポートフォリオ。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="Hinako Mitsuoka | Portfolio">
+  <meta property="og:description" content="光岡日菜子のポートフォリオ">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://unpkg.com/@primer/css@20.4.4/dist/primer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* === 🍑 === */
+    :root {
+      /* 指定 */
+      --peach-pink: #f09199;
+      --peach-cream: #ffffcc; 
+
+      --bg: #fffbfb;
+      --surface: #ffffff;
+      --text: #5e4e50;
+      --text-main: #4a3b3d;
+      --muted: #a39294;
+      --accent: var(--peach-pink);
+      --accent-strong: #d66a75; 
+      --accent-yellow: #f5e6a4;
+      --stroke: #ffeef0;
+      --header-bg: linear-gradient(135deg, var(--peach-cream) 0%, #ffe0e3 40%, var(--peach-pink) 100%);
+      --gradient-line: linear-gradient(to right, var(--peach-pink), var(--peach-cream));
+    }
+
+    html {
+        scroll-behavior: smooth; /* スムーススクロール */
+    }
+
+    body {
+      font-family: "Lato", "Noto Sans JP", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s;
+    }
+
+    /* === Language Toggle Logic === */
+    body[data-lang="jp"] .lang-en { display: none !important; }
+    body[data-lang="en"] .lang-jp { display: none !important; }
+
+    /* === Layout === */
+    .page { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+    /* === Header === */
+    header {
+      background: var(--header-bg);
+      padding: 50px 20px;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(240, 145, 153, 0.2);
+    }
+    
+    .profile-img {
+        width: 130px; height: 130px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid rgba(255,255,255,0.8);
+        box-shadow: 0 6px 15px rgba(240, 145, 153, 0.3);
+        margin-bottom: 20px;
+        background-color: white;
+    }
+    
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid white;
+      border-radius: 20px;
+      padding: 5px;
+      display: flex;
+      gap: 5px;
+      backdrop-filter: blur(4px);
+    }
+    
+    .lang-btn {
+      border: none;
+      background: none;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: var(--accent-strong);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .lang-btn.active {
+      background: var(--accent-strong);
+      color: white;
+    }
+
+    h1 { 
+        font-size: 2.5rem; 
+        color: var(--text-main); 
+        margin: 0; 
+        letter-spacing: 0.05em;
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+    }
+    .subtitle { color: var(--text); margin-top: 10px; font-weight: 500; opacity: 0.8; }
+    
+    .social-links { margin-top: 20px; }
+    .social-links a { 
+        margin: 0 12px; color: var(--accent-strong); text-decoration: none; font-weight: bold;
+        transition: all 0.2s; font-size: 1.1rem;
+    }
+    .social-links a:hover { color: var(--text-main); transform: translateY(-2px); display: inline-block; }
+
+    /* === Tabs Navigation === */
+    .tab-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 35px;
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      padding: 10px 0;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--stroke);
+      padding: 10px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--muted);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(240, 145, 153, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    .tab-btn:hover {
+        background: #fff;
+        color: var(--accent-strong);
+        transform: translateY(-1px);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--peach-pink), #ffabc0);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(240, 145, 153, 0.4);
+    }
+
+    /* === Content === */
+    .tab-content { display: none; animation: fadeIn 0.5s ease-in-out; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* === Cards & Lists === */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(240, 145, 153, 0.15);
+      border-color: var(--peach-pink);
+    }
+    
+    h2 {
+      position: relative;
+      padding-bottom: 0.4em;
+      margin-top: 1.8em;
+      margin-bottom: 1.2em;
+      color: var(--accent-strong);
+      font-size: 1.5rem;
+      border-bottom: none; 
+    }
+    /* グラデーション */
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--gradient-line);
+        border-radius: 2px;
+        opacity: 0.7;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+        color: var(--text-main);
+        margin-top: 15px;
+        margin-bottom: 12px;
+        border-left: 4px solid var(--peach-pink);
+        padding-left: 12px;
+    }
+
+    /* === Badge Styles === */
+    .badge-pdf, .badge-link {
+        background-color: var(--accent-strong);
+        color: white !important;
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        text-decoration: none;
+        margin-left: 8px;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid var(--accent-strong);
+        font-weight: 600;
+    }
+    .badge-link {
+        background-color: #fff;
+        color: var(--accent-strong) !important;
+        border-color: var(--stroke);
+    }
+    .badge-pdf:hover, .badge-link:hover {
+        background-color: var(--peach-pink);
+        color: white !important;
+        border-color: var(--peach-pink);
+        box-shadow: 0 4px 10px rgba(240, 145, 153, 0.3);
+        transform: translateY(-1px);
+    }
+
+    /* Lists */
+    ol, ul { padding-left: 1.4em; color: var(--text-main); }
+    li { margin-bottom: 1.2em; line-height: 1.75; }
+    ul li::marker, ol li::marker { color: var(--peach-pink); font-weight: bold; }
+
+
+    /* === Works Tab Specific === */
+    .search-container { margin-bottom: 25px; text-align: center; }
+    .search-input {
+        width: 100%; max-width: 450px; padding: 14px 24px;
+        border-radius: 30px; border: 2px solid var(--stroke);
+        font-size: 1rem; outline: none; transition: all 0.3s;
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--text-main);
+    }
+    .search-input:focus { 
+        border-color: var(--peach-pink); 
+        box-shadow: 0 0 0 4px rgba(240, 145, 153, 0.1);
+        background: white;
+    }
+    
+    .filter-btn {
+        background: var(--surface); border: 1px solid var(--stroke); color: var(--muted);
+        padding: 8px 16px; border-radius: 20px; cursor: pointer; margin: 0 5px;
+        font-size: 0.9rem; transition: all 0.2s; font-weight: 600;
+    }
+    .filter-btn:hover, .filter-btn.active {
+        background: #fffcf0;
+        border-color: var(--peach-pink); 
+        color: var(--accent-strong);
+    }
+
+    .work-card { display: flex; flex-direction: column; gap: 24px; }
+    @media (min-width: 600px) { .work-card { flex-direction: row; align-items: start; } }
+    
+    .work-icon {
+        width: 110px; height: 110px; object-fit: cover;
+        border-radius: 24px; border: 1px solid var(--stroke);
+        flex-shrink: 0; margin: 0 auto;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+        transition: transform 0.3s;
+    }
+    .work-card:hover .work-icon { transform: scale(1.03); }
+    @media (min-width: 600px) { .work-icon { margin: 0; } }
+
+    .work-content { flex: 1; }
+    .work-title {
+        font-size: 1.35rem; font-weight: 700; color: var(--accent-strong); margin-bottom: 8px; display: block;
+    }
+
+    .skill-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; margin-bottom: 20px; }
+    .skill-tag {
+        background-color: #fffdf5; 
+        color: var(--text-main);
+        border: 1px solid var(--stroke); 
+        padding: 6px 14px;
+        border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+        display: flex; align-items: center; gap: 6px;
+    }
+    .skill-tag i { color: var(--peach-pink); }
+
+    footer { 
+        text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.95rem; margin-top: 50px; 
+        border-top: none;
+        background: linear-gradient(to top, var(--peach-cream) 0%, var(--bg) 100%);
+    }
+
+    /* === Top Return Button === */
+    #back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--peach-pink); 
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        opacity: 0; 
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #back-to-top:hover {
+        background: var(--accent-strong);
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(240, 145, 153, 0.4);
+    }
+  </style>
+</head>
+
+<body data-lang="jp">
+
+<div class="page">
+  
+  <header>
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-jp" onclick="setLang('jp')">JP</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+
+    <img src="Image/profile.png" alt="Hinako Mitsuoka" class="profile-img">
+
+    <h1>
+      <span class="lang-jp">光岡 日菜子</span>
+      <span class="lang-en">Hinako Mitsuoka</span>
+    </h1>
+    <div class="subtitle">
+      <span class="lang-jp">名城大学大学院　理工学研究科　博士前期課程2年 / 堀田研究室</span>
+      <span class="lang-en">Master's Student at Meijo University / Hotta Lab.</span>
+    </div>
+    
+    <div class="social-links">
+      <a href="https://github.com/ppppeach-jam"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ramentabetai__1"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://scholar.google.co.jp/citations?hl=en&user=SODa45gAAAAJ"><i class="fa-brands fa-google-scholar"></i></a>
+      <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/"><i class="fa-solid fa-flask"></i></a>
+      <a href="mailto:200442165@ccalumni.meijo-u.ac.jp"><i class="fas fa-envelope"></i></a>
+    </div>
+  </header>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="openTab('profile', this)">Profile</button>
+    <button class="tab-btn" onclick="openTab('achievements', this)">Achievements</button>
+    <button class="tab-btn" onclick="openTab('publications', this)">Publications</button>
+    <button class="tab-btn" onclick="openTab('works', this)">Works</button>
+  </nav>
+
+  <div id="profile" class="tab-content active">
+    
+    <h2><span class="lang-jp">経歴</span><span class="lang-en">Biography</span></h2>
+    <div class="card">
+      <ul style="line-height: 1.8; color: var(--text-main); padding-left: 20px;">
+        <li>
+          <b>2024.04 - <span class="lang-jp">現在</span><span class="lang-en">Present</span></b>: 
+          <span class="lang-jp">名城大学大学院 理工学研究科 電気電子工学専攻（博士前期課程）</span>
+          <span class="lang-en">Graduate School of Science and Engineering, Meijo University (Master's Course)</span>
+        </li>
+        <li>
+          <b>2024.04 - <span class="lang-jp">現在</span><span class="lang-en">Present</span></b>: 
+          <span class="lang-jp">名古屋CV・PRML勉強会 幹事</span>
+          <span class="lang-en">Organizer of Nagoya CV/PRML Seminar</span>
+          <a href="https://nagoyacv.connpass.com/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+        </li>
+        <li>
+          <b>2024.08 - 2024.09</b>: 
+          <span class="lang-jp">NEC バイオメトリクス研究所 研究インターンシップ</span>
+          <span class="lang-en">Research Internship at NEC Biometrics Research Laboratories</span>
+        </li>
+        <li>
+          <b>2020.04 - 2024.03</b>: 
+          <span class="lang-jp">名城大学 理工学部 電気電子工学科 (学士)</span>
+          <span class="lang-en">Department of Electrical and Electronic Engineering, Meijo University (Bachelor)</span>
+        </li>
+      </ul>
+    </div>
+
+    <h2><span class="lang-jp">ボランティア・その他</span><span class="lang-en"> Other Activities</span></h2>
+    <div class="card">
+        <ul style="line-height: 1.6;">
+            <li>
+                Program Committee Member, 
+                The 40th Annual AAAI Conference on Artificial Intelligence (AAAI2026)
+            </li>
+            <li>
+                <span class="lang-jp">CVPR2025 Report作成協力</span>
+                <span class="lang-en">CVPR2025 Report Contributor</span>
+                <a href="https://t.co/OZQ3l2Pnc5" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+                Technical Program Committee Member, IEEE/CVF International Conference on Computer Vision (ICCV2025) Workshop (HiCV)
+            </li>
+            <li>
+                Technical Program Committee Member, European Conference on Computer Vision (ECCV2024) Workshop (HCV)
+            </li>
+            <li>
+                <span class="lang-jp">運営委員, 2023年度 名古屋大学拠点AI-MAILs x 東北大学拠点ClinicalAI 第3回合同シンポジウム</span>
+                <span class="lang-en">Organizing Committee, 3rd Joint Symposium of Nagoya Univ. AI-MAILs x Tohoku Univ. ClinicalAI (2023)</span>
+            </li>
+        </ul>
+    </div>
+
+    <h2><span class="lang-jp">所属学会</span><span class="lang-en">Memberships</span></h2>
+    <div class="card">
+        <ul>
+            <li>
+                <span class="lang-jp">IEEE Student Member</span>
+                <span class="lang-en">IEEE Student Member</span>
+            </li>
+            <li>
+                <span class="lang-jp">電子情報通信学会 学生員</span>
+                <span class="lang-en">The Institute of Electronics, Information and Communication Engineers (IEICE) Student Member</span>
+            </li>
+        </ul>
+    </div>
+
+    <h2>Contact</h2>
+    <div class="card">
+        <p style="margin-bottom: 15px;">
+            <i class="fas fa-envelope" style="color: var(--accent-strong); width: 20px;"></i> 
+            <b>Email (Univ):</b> <a href="mailto:200442165@ccalumni.meijo-u.ac.jp">200442165@ccalumni.meijo-u.ac.jp</a><br>
+            
+            <i class="fas fa-envelope" style="color: var(--accent-strong); width: 20px;"></i> 
+            <b>Email (Private):</b> <a href="mailto:ppppeach.jam@gmail.com">ppppeach.jam@gmail.com</a>
+        </p>
+        <p style="color: var(--text-main); font-size: 0.95em; line-height: 1.6;">
+            <i class="fas fa-map-marker-alt" style="color: var(--accent-strong); width: 20px;"></i>
+            <span class="lang-jp">
+                〒468-8502 愛知県名古屋市天白区塩釜口1-501　名城大学 理工学部
+            </span>
+            <span class="lang-en">
+                Meijo University, 1-501 Shiogamaguchi, Tempaku-ku, Nagoya, Aichi 468-8502, Japan
+            </span>
+        </p>
+    </div>
+
+  </div>
+
+  <div id="achievements" class="tab-content">
+    <h2><span class="lang-jp">受賞・表彰</span><span class="lang-en">Awards & Honors</span></h2>
+    <h3>2025</h3>
+    <div class="card">
+        <ul class="awards-list">
+            <li>
+                Hack U 名城大学 2025 Happy Hacking賞（2025年12月）
+                <a href="https://hacku.yahoo.co.jp/meijo2025/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+                外観検査アルゴリズムコンテスト 最優秀賞（2025年12月）<br>
+                <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：検出・分類の二段階フレームワークによるキャベツの葉数推定～YOLOv12・ConvNeXtv2および合成データ・境界情報の活用～</span>
+                <a href="https://alcon.itlab.org/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+                アクセル株式会社主催 Axell AI Contest入賞（2025年09月）
+                <a href="https://www.axell.co.jp/news/20250714.html" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+                電子情報通信学会東海支部 令和6年度学生研究奨励賞（2025年06月）<br>
+                <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：Feedback Formerを用いた細胞画像セグメンテーションの精度向上</span>
+                <a href="https://www.ieice.org/tokai/student/student-shorei/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+        </ul>
+    </div>
+    
+    <h3>2024</h3>
+    <div class="card">
+        <ul class="awards-list">
+            <li>
+                IEEE名古屋支部学生奨励賞（2025年01月）<br>
+                <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：セマンティックセグメンテーションと1対1マッチングによる根毛の伸長過程の自動定量化</span>
+                <a href="https://ieee-jp.org/section/nagoya/category/section-activity/award-comittee/student-encouragement-award/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+                アクセル株式会社主催 Axell AI Contest入賞（2024年09月）
+                <a href="https://ailia.ai/contest/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+        </ul>
+    </div>
+    
+    <h3>2023</h3>
+    <div class="card">
+        <ul class="awards-list">
+            <li>名城大学 学長表彰 3件（2024年03月）</li>
+            <li>名城大学 理工学部後援会奨励賞（2024年03月）</li>
+            <li>IEEE Nagoya Section Excellent Student Award（2024年03月）</li>
+            <li>
+                電気学会東海支部長賞（2024年03月）<br>
+                <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：TransformerとFeedbackを用いた細胞画像のセグメンテーション精度向上</span>
+                <a href="https://www.iee.jp/tokai/award/支部長賞受賞者2023年/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+                パワーアカデミー主催 第6回電気工学教材企画コンテスト 最優秀賞（2024年03月）
+                <a href="https://www.power-academy.jp/info/2024/003795.html/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+                Hack U 名城大学 2023 最優秀賞, Happy Hacking賞（2023年12月）
+                <a href="https://hacku.yahoo.co.jp/meijo2023/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+                テクノプロ・デザイン社主催 食品パッケージ画像解析チャレンジ 学生の部3位（2024年10月）
+                <a href="https://www.youtube.com/watch?v=6uCAA5bBXcw" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>
+              卒業論文中間発表会 優秀発表賞（2023年10月）<br>
+              <span style="font-size:0.9em; color:var(--muted);">受賞テーマ：脳MRI画像のモダリティ変換の研究</span>
+              <a href="https://www.meijo-denkikai.jp/report/2023/0901.html" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+        </ul>
+    </div>
+
+    <h3>～2022</h3>
+    <div class="card">
+        <ul class="awards-list">
+            <li>名城大学 理工学部後援会奨励賞（2023年03月）</li>
+            <li>
+                電気学会主催 U-21学生研究発表会 奨励賞（2023年3月）
+                <a href="https://www.iee.jp/u-21-2023-award/" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+            <li>名城大学 学長表彰（2021年03月）</li>
+            <li>名城大学 理工学部後援会奨励賞（2021年03月）</li>
+            <li>
+                パワーアカデミー主催 第3回電気工学教材企画コンテスト 最優秀賞（2021年03月）
+                <a href="https://www.power-academy.jp/info/2021/002707.html" target="_blank" class="badge-link"><i class="fas fa-link"></i> Link</a>
+            </li>
+        </ul>
+    </div>
+
+    <h2><span class="lang-jp">奨学金・助成金</span><span class="lang-en">Scholarships</span></h2>
+    <div class="card">
+        <ul class="awards-list">
+            <li>公益財団法人 リンナイ奨学財団 給付型奨学金 採択（2024年04月～2026年03月）</li>
+            <li>令和5年度 名城大学 学業優秀奨学生（2023年）</li>
+            <li>令和4年度 名城大学 校友会奨学生（2022年）</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="publications" class="tab-content">
+    <h2>
+        <span class="lang-jp">学術論文誌</span>
+        <span class="lang-en">Journal・Academic Journal</span>
+    </h2>
+    <div class="card">
+      <ol>
+        <li>
+            <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
+            "Human Brain-Inspired Network Using Transformer and Feedback Processing for Cell Image Segmentation", 
+            <i>IEEE Access</i>, 13, pp.50917-50930, 2025. (impact factor=<b>3.6</b>, acceptance rate=<b>27</b>%)
+            <a href="https://ieeexplore.ieee.org/document/10934004" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+        </li>
+      </ol>
+    </div>
+    <h2>
+        <span class="lang-jp">国際学会 (フルペーパー査読)</span>
+        <span class="lang-en">International Conferences (Refereed)</span>
+    </h2>
+    <div class="card">
+      <ol>
+        <li>
+            <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
+            "Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation", 
+            <i>The International Conference on Computer Vision Theory and Applications (VISAPP2026)</i>, 
+            March, 2026, Marbella, Spain (Oral).
+        </li>
+        <li>
+            <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
+            "Accuracy Improvement of Cell Image Segmentation Using Feedback Former", 
+            <i>In Proceedings of the 18th European Conference on Computer Vision ECCV 2024 workshop (HCV)</i>, 
+            October, 2024, Milano, Italy (Poster).
+            <a href="https://arxiv.org/pdf/2408.12974" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+        </li>
+        <li>
+            Sota Kato, <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
+            "Generalized SAM: Efficient Fine-Tuning of SAM for Variable Input Image Sizes", 
+            <i>In Proceedings of the 18th European Conference on Computer Vision ECCV 2024 workshop (CADL)</i>, 
+            October, 2024, Milano, Italy (Oral).
+            <a href="https://arxiv.org/pdf/2408.12406.pdf" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+        </li>
+      </ol>
+    </div>
+
+    <h2>
+        <span class="lang-jp">国内学会・シンポジウム</span>
+        <span class="lang-en">Domestic Conferences</span>
+    </h2>
+    <div class="card">
+      <ol>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "時間的行動セグメンテーションのための行動持続時間を考慮した事前分布とF1適応型損失の提案", 動的画像処理実利用化ワークショップ2026（DIA2026）, 2026年3月, 高知県高知市.</li>
+        <li>坂井泰吾，<b><u>光岡 日菜子</u></b>, 堀田一弘, "検出・分類の二段階フレームワークによるキャベツの葉数推定～YOLOv12・ConvNeXtv2および合成データ・境界情報の活用～", ビジョン技術の実利用ワークショップ2025（ViEW2025）内：外観検査アルゴリズムコンテスト, 2025年12月, 神奈川県横浜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "SAM2の効率的追加学習による医用・細胞画像セグメンテーション", ビジョン技術の実利用ワークショップ2025（ViEW2025）, 2025年12月, 神奈川県横浜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "基盤モデルSAM2の医用画像適応に向けたAdapterの提案", 2025年度 日本生体医工学東海支部大会, 2025年11月, 愛知県名古屋市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 河野洋平, 堀田一弘, "効率的境界検出と最適輸送損失による時系列行動セグメンテーションの精度向上", 第28回情報論的学習理論ワークショップ（IBIS2025）, 2025年11月, 沖縄県那覇市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "Feedback Formerを用いた細胞画像セグメンテーションの精度向上", 令和七年度 電気・電子・情報関係学会東海支部連合大会 OS5「学生研究奨励賞【修士の部】による特別講演」, 2025年09月, 長野県長野市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "時系列行動セグメンテーションにおける汎用的性能向上のための行動境界識別用チャネル拡張手法の提案, 第24回情報科学技術フォーラム（FIT2025）, 2025年09月, 北海道札幌市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 荻野有加, 戸泉貴裕, 堀田一弘, "マルチタスク学習による弱教師あり赤外線小物体検出の精度向上及び安定化", 第28回画像の認識・理解シンポジウム（MIRU2025), 2025年07-08月, 京都府京都市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "マルチタスク学習による弱教師あり赤外線小物体セグメンテーションの精度向上及び安定化", 令和6年度 電子情報通信学会 総合大会, 2025年03月, 東京都世田谷区.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "ラベル不均衡な場合の医用画像セグメンテーションにおけるValidationデータ不要の損失関数設計", 医用画像情報学会 令和6年度201回大会, 2025年2月, 愛知県名古屋市.</li>
+        <li>横井悠人, 齋藤令次, <b><u>光岡 日菜子</u></b>, 堀田一弘, "Multiplicative loss functionを用いたセグメンテーションの精度向上", ビジョン技術の実利用ワークショップ2024（ViEW2024）, 2024年12月, 神奈川県横浜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 高橋望, 久保田茜, 遠藤求, 堀田一弘, "ラベル不均衡な根毛画像データに対するセグメンテーション及び損失関数の最適化", ビジョン技術の実利用ワークショップ2024（ViEW2024）, 2024年12月, 神奈川県横浜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 高橋望, 久保田茜, 遠藤求, 堀田一弘, "セマンティックセグメンテーションと1対1マッチングによる根毛の伸長過程の自動定量化", 令和六年度 電気・電子・情報関係学会東海支部連合大会, 2024年08月, 岐阜県岐阜市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "Feedback Formerを用いた細胞画像セグメンテーションの精度向上", 第27回画像の認識・理解シンポジウム（MIRU2024), 2024年08月, 熊本県熊本市.</li>
+        <li><b><u>光岡 日菜子</u></b>, 堀田一弘, "TransformerとFeedbackを用いた細胞画像セグメンテーションの精度向上", CVIM2024年5月研究会プログラム（CVIM第238回）, 2024年05月, 東京都目黒区.</li>
+      </ol>
+    </div>
+
+    <h2>
+        <span class="lang-jp">学位論文</span>
+        <span class="lang-en">Thesis</span>
+    </h2>
+    <div class="card">
+      <ul class="thesis-list">
+        <li>
+            <span class="lang-jp"><b>学士論文：</b></span>
+            <span class="lang-en"><b>Bachelor's Thesis:</b></span><br>
+            「TransformerとFeedbackを用いた細胞画像のセグメンテーション精度向上」
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="works" class="tab-content">
+    <h2><span class="lang-jp">製作物・スキル</span><span class="lang-en">Works & Skills</span></h2>
+
+    <div class="card" style="text-align: center;">
+        <p style="margin-bottom: 10px;"><strong>Languages & Libraries</strong></p>
+        <a href="https://skillicons.dev">
+            <img src="https://skillicons.dev/icons?i=c,py,pytorch,opencv,sklearn,matlab,swift" style="max-width: 100%;" loading="lazy" />
+        </a>
+
+        <p style="margin-top: 20px; margin-bottom: 10px;"><strong>Tools & Environments</strong></p>
+        <a href="https://skillicons.dev">
+            <img src="https://skillicons.dev/icons?i=docker,linux,vscode,latex,md,ae,ai" style="max-width: 100%;" loading="lazy" />
+        </a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="work-search" class="search-input" placeholder="Search projects (e.g. iOS, Python, Web)..." onkeyup="filterWorks()">
+        <div style="margin-top: 10px;">
+            <button class="filter-btn" onclick="setSearch('iOS')">iOS</button>
+            <button class="filter-btn" onclick="setSearch('Web')">Web</button>
+            <button class="filter-btn" onclick="setSearch('AI')">AI</button>
+            <button class="filter-btn" onclick="setSearch('')">Clear</button>
+        </div>
+    </div>
+
+    <div class="card work-card">
+        <img src="Image/1024.png" alt="recolLe" class="work-icon" loading="lazy">
+        <div class="work-content">
+            <span class="work-title">recolLe (Web & iOS App)</span>
+            <div class="skill-container" style="margin: 5px 0 10px;">
+                <span class="skill-tag">Web</span> <span class="skill-tag">iOS</span>
+            </div>
+            <p>
+                <span class="lang-jp">「ありふれた思い出」に彩りを。NFCタグを搭載したアクリルキーホルダーにスマホをかざすだけで見られる、あなただけのオリジナルアルバム。</span>
+                <span class="lang-en">Your own original album that can be viewed simply by holding your smartphone over an acrylic keychain equipped with an NFC tag.</span>
+            </p>
+            <a href="https://recolle.vercel.app/" target="_blank" class="badge-link"><i class="fas fa-globe"></i> Web</a>
+            <a href="https://apps.apple.com/jp/app/recolle-nfc-photo-album/id6755230226" target="_blank" class="badge-link"><i class="fab fa-app-store"></i> App Store</a>
+        </div>
+    </div> <div class="card work-card">
+        <img src="Image/kozeniicon2.png" alt="おつりDoctor" class="work-icon">
+        <div class="work-content">
+            <span class="work-title">
+                <span class="lang-jp">おつりDoctor (iOS App)</span>
+                <span class="lang-en">おつりDoctor (iOS App)</span>
+            </span>
+            <div class="skill-container" style="margin: 5px 0 10px;">
+                <span class="skill-tag">iOS</span> <span class="skill-tag">AI</span>
+            </div>
+            <p>
+                <span class="lang-jp">小銭を並べてカメラで撮影すると、各種小銭の枚数や合計金額を計算可能。利用回数が増えることによる成長機能も搭載。</span>
+                <span class="lang-en">Calculate the number and total amount of coins simply by arranging them and taking a picture with the camera.</span>
+            </p>
+            <a href="https://apps.apple.com/jp/app/%E3%81%8A%E3%81%A4%E3%82%8Adoctor/id6755966828" target="_blank" class="badge-link"><i class="fab fa-app-store"></i> App Store</a>
+        </div>
+    </div>
+
+    <div class="card work-card">
+        <img src="Image/choukaizou_icon.png" alt="超kAI像" class="work-icon">
+        <div class="work-content">
+            <span class="work-title">
+                <span class="lang-jp">超kAI像 (iOS App)</span>
+                <span class="lang-en">超kAI像 (iOS App)</span>
+            </span>
+            <div class="skill-container" style="margin: 5px 0 10px;">
+                <span class="skill-tag">iOS</span> <span class="skill-tag">AI</span>
+            </div>
+            <p>
+                <span class="lang-jp">AI超解像で写真を最大4倍に高精細化します。細部までくっきり、自然な仕上がりです！フォルダで賢く分類し、写真ごとにメモを保存できます。</span>
+                <span class="lang-en">Enhance photos up to 4x resolution using AI super-resolution technology. Sharp details with a natural finish!</span>
+            </p>
+            <a href="https://apps.apple.com/jp/app/%E8%B6%85kai%E8%94%B5/id6751739848" target="_blank" class="badge-link"><i class="fab fa-app-store"></i> App Store</a>
+        </div>
+    </div>
+
+    <div class="card work-card">
+        <img src="Image/kikonashi_icon.png" alt="kikonAshI" class="work-icon">
+        <div class="work-content">
+            <span class="work-title">kikonAshI (iOS App)</span>
+            <div class="skill-container" style="margin: 5px 0 10px;">
+                <span class="skill-tag">iOS</span> <span class="skill-tag">AI</span>
+            </div>
+            <p>
+                <span class="lang-jp">ファッションに特化したAIを独自開発。iPhoneで撮影した洋服の画像をもとに、最適なコーディネートをAIが提案。</span>
+                <span class="lang-en">Developed a specialized AI for fashion. Based on photos of clothes taken with an iPhone, the AI suggests optimal outfits.</span>
+            </p>
+            <a href="https://apps.apple.com/us/app/kikonashi/id6502258139" target="_blank" class="badge-link"><i class="fab fa-app-store"></i> App Store</a>
+        </div>
+    </div>
+
+    </div> <button id="back-to-top" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  </div> </div> <footer>
+  © 2025 Hinako Mitsuoka 🍑
+</footer>
+
+<script>
+  // === タブ切り替え機能 ===
+  function openTab(tabName, btnElement) {
+    var contents = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < contents.length; i++) {
+      contents[i].classList.remove("active");
+    }
+    document.getElementById(tabName).classList.add("active");
+
+    var btns = document.getElementsByClassName("tab-btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.remove("active");
+    }
+    if (btnElement) {
+        btnElement.classList.add("active");
+    }
+  }
+
+  // === 言語切り替え機能 ===
+  function setLang(lang) {
+    document.body.setAttribute('data-lang', lang);
+    document.getElementById('btn-jp').classList.toggle('active', lang === 'jp');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  // === Works 検索機能 ===
+  function filterWorks() {
+    var input = document.getElementById('work-search');
+    var filter = input.value.toLowerCase();
+    var cards = document.getElementsByClassName('work-card');
+
+    for (var i = 0; i < cards.length; i++) {
+        var text = cards[i].textContent || cards[i].innerText;
+        if (text.toLowerCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+  }
+
+  // === ボタンフィルター用ヘルパー ===
+  function setSearch(keyword) {
+      var input = document.getElementById('work-search');
+      input.value = keyword;
+      filterWorks();
+  }
+
+  // === Scroll to Top 機能 ===
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', () => {
+      // 300px以上スクロールしたらボタンを表示
+      if (window.scrollY > 300) {
+          backToTopBtn.classList.add('show');
+      } else {
+          backToTopBtn.classList.remove('show');
+      }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+      // スムーズにトップへ戻る
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });
+</script>
+
+</body>
+</html>
