@@ -123,6 +123,31 @@
         transition: all 0.2s; font-size: 1.1rem;
     }
     .social-links a:hover { color: var(--text-main); transform: translateY(-2px); display: inline-block; }
+    .social-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .social-links a.social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;  
+      font-weight: 400; 
+      font-size: 1.05rem;
+    }
+    
+    .social-links a.social-link i {
+      font-size: 20px;
+    }
+    
+    .social-links a.social-link span {
+      font-weight: 400;
+      opacity: 0.9;
+    }
 
     /* === Tabs Navigation === */
     .tab-nav {
