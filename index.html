@@ -119,10 +119,62 @@
     
     .social-links { margin-top: 20px; }
     .social-links a { 
-        margin: 0 12px; color: var(--accent-strong); text-decoration: none; font-weight: bold;
-        transition: all 0.2s; font-size: 1.1rem;
+        margin: 0 12px; 
+        color: var(--accent-strong); 
+        text-decoration: none; 
+        font-weight: bold;
+        transition: all 0.2s; 
+        font-size: 1.1rem;
+        display: inline-block;
+        position: relative;
     }
-    .social-links a:hover { color: var(--text-main); transform: translateY(-2px); display: inline-block; }
+    .social-links a:hover { 
+      color: var(--text-main); 
+      transform: translateY(-2px); 
+    }
+
+    .social-links a::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: -42px;
+      transform: translateX(-50%);
+      background: rgba(94, 78, 80, 0.95);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+    
+    .social-links a::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-bottom: none;
+      border-top-color: rgba(94, 78, 80, 0.95);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    
+    .social-links a:hover::after,
+    .social-links a:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
 
     /* === Tabs Navigation === */
     .tab-nav {
@@ -370,12 +422,12 @@
     </div>
     
     <div class="social-links">
-      <a href="https://github.com/ppppeach-jam"><i class="fab fa-github"></i></a>
-      <a href="https://twitter.com/ramentabetai__1"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://scholar.google.co.jp/citations?hl=en&user=SODa45gAAAAJ" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
-      <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/"><i class="fa-solid fa-flask"></i></a>
-      <a href="mailto:200442165@ccalumni.meijo-u.ac.jp"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/%E6%97%A5%E8%8F%9C%E5%AD%90-%E5%85%89%E5%B2%A1-71668b3b3/"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/ppppeach-jam" target="_blank" data-tooltip="GitHub: ppppeach-jam" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ramentabetai__1" target="_blank" data-tooltip="X: @ramentabetai__1" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://scholar.google.co.jp/citations?hl=en&user=SODa45gAAAAJ" target="_blank" data-tooltip="Google Scholar" aria-label="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+      <a href="https://wwwms.meijo-u.ac.jp/kazuhotta/" target="_blank" data-tooltip="Hotta Lab." aria-label="Hotta Lab"><i class="fa-solid fa-flask"></i></a>
+      <a href="mailto:200442165@ccalumni.meijo-u.ac.jp"><i class="fas fa-envelope" data-tooltip="University Email" aria-label="University Email"></i></a>
+      <a href="https://www.linkedin.com/in/%E6%97%A5%E8%8F%9C%E5%AD%90-%E5%85%89%E5%B2%A1-71668b3b3/" target="_blank" data-tooltip="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
   </header>
 
