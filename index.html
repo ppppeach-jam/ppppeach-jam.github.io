@@ -1030,50 +1030,74 @@
   });
 
   // === BibTeX ポップアップ機能 ===
-  // NOTE: ページに載っている情報から組み立てた仮のBibTeXです。正式なBibTeXが用意でき次第、差し替えてください
+  // NOTE: 各論文の公式BibTeXです
   const bibtexData = {
-    'ieeeaccess2025': `@article{mitsuoka2025human,
-  author  = {Mitsuoka, Hinako and Hotta, Kazuhiro},
-  title   = {Human Brain-Inspired Network Using Transformer and Feedback Processing for Cell Image Segmentation},
-  journal = {IEEE Access},
-  volume  = {13},
-  pages   = {50917--50930},
-  year    = {2025}
+    'ieeeaccess2025': `@ARTICLE{10934004,
+  author={Mitsuoka, Hinako and Hotta, Kazuhiro},
+  journal={IEEE Access},
+  title={Human Brain-Inspired Network Using Transformer and Feedback Processing for Cell Image Segmentation},
+  year={2025},
+  volume={13},
+  number={},
+  pages={50918-50930},
+  keywords={Transformers;Computer architecture;Microprocessors;Brain modeling;Accuracy;Visualization;Computational modeling;Biological neural networks;Feature extraction;Convolution;Feedback processing;semantic segmentation;transformer},
+  doi={10.1109/ACCESS.2025.3552847}}`,
+    'icip2026': `@article{mitsuoka2026prompt,
+  title={Prompt-Free and Efficient SAM2 Adaptation for Biomedical Semantic Segmentation via Dual Adapters},
+  author={Mitsuoka, Hinako and Hotta, Kazuhiro},
+  journal={arXiv preprint arXiv:2605.05979},
+  year={2026}
 }`,
-    'icip2026': `@inproceedings{mitsuoka2026promptfree,
-  author    = {Mitsuoka, Hinako and Hotta, Kazuhiro},
-  title     = {Prompt-Free and Efficient SAM2 Adaptation for Biomedical Semantic Segmentation via Dual Adapters},
-  booktitle = {IEEE International Conference on Image Processing (ICIP)},
-  year      = {2026},
-  address   = {Tampere, Finland}
+    'cvpr2026w': `@InProceedings{Mitsuoka_2026_CVPR,
+    author    = {Mitsuoka, Hinako and Hotta, Kazuhiro},
+    title     = {Combining Boundary Supervision and Segment-Level Regularization for Fine-Grained Action Segmentation},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2026},
+    pages     = {8865-8873}
 }`,
-    'cvpr2026w': `@inproceedings{mitsuoka2026combining,
-  author    = {Mitsuoka, Hinako and Hotta, Kazuhiro},
-  title     = {Combining Boundary Supervision and Segment-Level Regularization for Fine-Grained Action Segmentation},
-  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
-  year      = {2026},
-  address   = {Denver, CO, USA}
+    'visapp2026': `@conference{visapp26,
+author={Hinako Mitsuoka and Kazuhiro Hotta},
+title={Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation},
+booktitle={Proceedings of the 21st International Conference on Computer Vision Theory and Applications - Volume 2: VISAPP},
+year={2026},
+pages={390-397},
+publisher={SciTePress},
+organization={INSTICC},
+doi={10.5220/0014396200004084},
+isbn={978-989-758-804-4},
+issn={2184-4321},
 }`,
-    'visapp2026': `@inproceedings{mitsuoka2026hazardaware,
-  author    = {Mitsuoka, Hinako and Hotta, Kazuhiro},
-  title     = {Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation},
-  booktitle = {International Conference on Computer Vision Theory and Applications (VISAPP)},
-  year      = {2026},
-  address   = {Marbella, Spain}
+    'eccv2024hcv': `@InProceedings{10.1007/978-3-031-91578-9_21,
+author="Mitsuoka, Hinako
+and Hotta, Kazuhiro",
+editor="Del Bue, Alessio
+and Canton, Cristian
+and Pont-Tuset, Jordi
+and Tommasi, Tatiana",
+title="Accuracy Improvement of Cell Image Segmentation Using Feedback Former",
+booktitle="Computer Vision -- ECCV 2024 Workshops",
+year="2025",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="278--288",
+isbn="978-3-031-91578-9"
 }`,
-    'eccv2024hcv': `@inproceedings{mitsuoka2024accuracy,
-  author    = {Mitsuoka, Hinako and Hotta, Kazuhiro},
-  title     = {Accuracy Improvement of Cell Image Segmentation Using Feedback Former},
-  booktitle = {European Conference on Computer Vision (ECCV) Workshops},
-  year      = {2024},
-  address   = {Milano, Italy}
-}`,
-    'eccv2024cadl': `@inproceedings{kato2024generalized,
-  author    = {Kato, Sota and Mitsuoka, Hinako and Hotta, Kazuhiro},
-  title     = {Generalized SAM: Efficient Fine-Tuning of SAM for Variable Input Image Sizes},
-  booktitle = {European Conference on Computer Vision (ECCV) Workshops},
-  year      = {2024},
-  address   = {Milano, Italy}
+    'eccv2024cadl': `@InProceedings{10.1007/978-3-031-91979-4_14,
+author="Kato, Sota
+and Mitsuoka, Hinako
+and Hotta, Kazuhiro",
+editor="Del Bue, Alessio
+and Canton, Cristian
+and Pont-Tuset, Jordi
+and Tommasi, Tatiana",
+title="Generalized SAM: Efficient Fine-Tuning of SAM for Variable Input Image Sizes",
+booktitle="Computer Vision -- ECCV 2024 Workshops",
+year="2025",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="167--182",
+isbn="978-3-031-91979-4"
 }`
   };
 
