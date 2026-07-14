@@ -283,6 +283,8 @@
         gap: 5px;
         border: 1px solid var(--accent-strong);
         font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
     }
     .badge-link {
         background-color: #fff;
@@ -301,6 +303,84 @@
     ol, ul { padding-left: 1.4em; color: var(--text-main); }
     li { margin-bottom: 1.2em; line-height: 1.75; }
     ul li::marker, ol li::marker { color: var(--peach-pink); font-weight: bold; }
+
+    /* === BibTeX Popup === */
+    .bibtex-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(74, 59, 61, 0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 2000;
+    }
+    .bibtex-overlay.show { display: flex; }
+
+    .bibtex-modal {
+        position: relative;
+        background: var(--surface);
+        border-radius: 16px;
+        padding: 30px 24px 24px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 80vh;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .bibtex-close {
+        position: absolute;
+        top: 10px;
+        right: 14px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        line-height: 1;
+        color: var(--muted);
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    .bibtex-close:hover { color: var(--accent-strong); }
+
+    #bibtex-text {
+        margin: 0;
+        overflow: auto;
+        background: #fffdf5;
+        border: 1px solid var(--stroke);
+        border-radius: 12px;
+        padding: 16px;
+        font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: var(--text-main);
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .bibtex-copy {
+        align-self: flex-end;
+        background-color: var(--accent-strong);
+        color: white;
+        border: 1px solid var(--accent-strong);
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s;
+    }
+    .bibtex-copy:hover {
+        background-color: var(--peach-pink);
+        border-color: var(--peach-pink);
+        box-shadow: 0 4px 10px rgba(240, 145, 153, 0.3);
+    }
 
 
     /* === Works Tab Specific === */
@@ -695,6 +775,7 @@
             "Human Brain-Inspired Network Using Transformer and Feedback Processing for Cell Image Segmentation", 
             <i>IEEE Access</i>, 13, pp.50917-50930, 2025. (impact factor=<b>3.6</b>, acceptance rate=<b>27</b>%)
             <a href="https://ieeexplore.ieee.org/document/10934004" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+            <button class="badge-pdf" onclick="showBibtex('ieeeaccess2025')"><i class="fas fa-quote-right"></i> BibTeX</button>
         </li>
       </ol>
     </div>
@@ -710,6 +791,7 @@
             <i>IEEE International Conference on Image Processing (ICIP2026)</i>, 
             September, 2026, Tampere, Finland (TBD).
             <a href="https://arxiv.org/pdf/2605.05979" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+            <button class="badge-pdf" onclick="showBibtex('icip2026')"><i class="fas fa-quote-right"></i> BibTeX</button>
         </li>
         <li>
             <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
@@ -717,6 +799,7 @@
             <i>The IEEE/CVF Conference on Computer Vision and Pattern Recognition CVPR 2026 Workshop (SAUAFG)</i>, 
             June, 2026, Denver, United States (Oral).
             <a href="https://openaccess.thecvf.com/content/CVPR2026W/SAUAFG/papers/Mitsuoka_Combining_Boundary_Supervision_and_Segment-Level_Regularization_for_Fine-Grained_Action_Segmentation_CVPRW_2026_paper.pdf" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+            <button class="badge-pdf" onclick="showBibtex('cvpr2026w')"><i class="fas fa-quote-right"></i> BibTeX</button>
         </li>
         <li>
             <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
@@ -724,6 +807,7 @@
             <i>The International Conference on Computer Vision Theory and Applications (VISAPP2026)</i>, 
             March, 2026, Marbella, Spain (Oral).
             <a href="https://www.scitepress.org/Papers/2026/143962/143962.pdf" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+            <button class="badge-pdf" onclick="showBibtex('visapp2026')"><i class="fas fa-quote-right"></i> BibTeX</button>
         </li>
         <li>
             <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
@@ -731,6 +815,7 @@
             <i>European Conference on Computer Vision ECCV 2024 Workshop (HCV)</i>, 
             October, 2024, Milano, Italy (Poster).
             <a href="https://arxiv.org/pdf/2408.12974" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+            <button class="badge-pdf" onclick="showBibtex('eccv2024hcv')"><i class="fas fa-quote-right"></i> BibTeX</button>
         </li>
         <li>
             Sota Kato, <b><u>Hinako Mitsuoka</u></b> and Kazuhiro Hotta, 
@@ -738,6 +823,7 @@
             <i>European Conference on Computer Vision ECCV 2024 Workshop (CADL)</i>, 
             October, 2024, Milano, Italy (Oral).
             <a href="https://arxiv.org/pdf/2408.12406.pdf" target="_blank" class="badge-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+            <button class="badge-pdf" onclick="showBibtex('eccv2024cadl')"><i class="fas fa-quote-right"></i> BibTeX</button>
         </li>
       </ol>
     </div>
@@ -867,6 +953,14 @@
   © 2026 Hinako Mitsuoka 🍑
 </footer>
 
+<div id="bibtex-overlay" class="bibtex-overlay" onclick="closeBibtex(event)">
+  <div class="bibtex-modal">
+    <button class="bibtex-close" onclick="closeBibtex()" aria-label="Close">&times;</button>
+    <pre id="bibtex-text"></pre>
+    <button class="bibtex-copy" id="bibtex-copy-btn" onclick="copyBibtex()"><i class="fas fa-copy"></i> Copy</button>
+  </div>
+</div>
+
 <script>
   // === タブ切り替え機能 ===
   function openTab(tabName, btnElement) {
@@ -933,6 +1027,62 @@
           top: 0,
           behavior: 'smooth'
       });
+  });
+
+  // === BibTeX ポップアップ機能 ===
+  // TODO: 各キーの中身を公式BibTeXに差し替えてください
+  const bibtexData = {
+    'ieeeaccess2025': `@article{TODO_ieeeaccess2025,
+  title   = {TODO: paste official BibTeX for "Human Brain-Inspired Network Using Transformer and Feedback Processing for Cell Image Segmentation" here}
+}`,
+    'icip2026': `@inproceedings{TODO_icip2026,
+  title   = {TODO: paste official BibTeX for "Prompt-Free and Efficient SAM2 Adaptation for Biomedical Semantic Segmentation via Dual Adapters" here}
+}`,
+    'cvpr2026w': `@inproceedings{TODO_cvpr2026w,
+  title   = {TODO: paste official BibTeX for "Combining Boundary Supervision and Segment-Level Regularization for Fine-Grained Action Segmentation" here}
+}`,
+    'visapp2026': `@inproceedings{TODO_visapp2026,
+  title   = {TODO: paste official BibTeX for "Hazard-Aware Duration Prior and F1-Adaptive Loss for Temporal Action Segmentation" here}
+}`,
+    'eccv2024hcv': `@inproceedings{TODO_eccv2024hcv,
+  title   = {TODO: paste official BibTeX for "Accuracy Improvement of Cell Image Segmentation Using Feedback Former" here}
+}`,
+    'eccv2024cadl': `@inproceedings{TODO_eccv2024cadl,
+  title   = {TODO: paste official BibTeX for "Generalized SAM: Efficient Fine-Tuning of SAM for Variable Input Image Sizes" here}
+}`
+  };
+
+  const bibtexOverlay = document.getElementById('bibtex-overlay');
+  const bibtexTextEl = document.getElementById('bibtex-text');
+  const bibtexCopyBtn = document.getElementById('bibtex-copy-btn');
+  let currentBibtexId = null;
+
+  function showBibtex(id) {
+    currentBibtexId = id;
+    bibtexTextEl.textContent = bibtexData[id] || '';
+    bibtexOverlay.classList.add('show');
+  }
+
+  function closeBibtex(event) {
+    if (event && event.target !== bibtexOverlay && !event.target.classList.contains('bibtex-close')) {
+      return;
+    }
+    bibtexOverlay.classList.remove('show');
+  }
+
+  function copyBibtex() {
+    if (!currentBibtexId) return;
+    navigator.clipboard.writeText(bibtexData[currentBibtexId]).then(() => {
+      const original = bibtexCopyBtn.innerHTML;
+      bibtexCopyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      setTimeout(() => { bibtexCopyBtn.innerHTML = original; }, 1500);
+    });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      bibtexOverlay.classList.remove('show');
+    }
   });
 </script>
 
