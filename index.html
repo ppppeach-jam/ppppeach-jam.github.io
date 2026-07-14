@@ -1005,10 +1005,29 @@
   }
 
   // === ボタンフィルター用ヘルパー ===
+  // (テキスト検索は部分一致、ボタンはタグの完全一致で絞り込む)
   function setSearch(keyword) {
       var input = document.getElementById('work-search');
       input.value = keyword;
-      filterWorks();
+      var cards = document.getElementsByClassName('work-card');
+
+      if (keyword === '') {
+          filterWorks();
+          return;
+      }
+
+      var keywordLower = keyword.toLowerCase();
+      for (var i = 0; i < cards.length; i++) {
+          var tags = cards[i].querySelectorAll('.skill-tag');
+          var match = false;
+          for (var j = 0; j < tags.length; j++) {
+              if (tags[j].textContent.trim().toLowerCase() === keywordLower) {
+                  match = true;
+                  break;
+              }
+          }
+          cards[i].style.display = match ? "" : "none";
+      }
   }
 
   // === Scroll to Top 機能 ===
