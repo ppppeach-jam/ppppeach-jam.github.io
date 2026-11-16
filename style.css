@@ -231,14 +231,6 @@ ul li::marker, ol li::marker { color: var(--accent-soft); }
 .contact p { margin: 6px 0; }
 .contact i { color: var(--accent); width: 20px; text-align: center; margin-right: 4px; }
 
-/* === CV page === */
-.cv-header { text-align: left; margin-bottom: 8px; }
-.cv-header h1 { font-size: 1.6rem; }
-.cv-updated { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
-.cv .contact { margin-bottom: 8px; }
-.cv h2 { margin-top: 36px; }
-.cv-actions { text-align: right; margin-bottom: 8px; }
-
 /* === BibTeX Popup === */
 .bibtex-overlay {
   position: fixed;
@@ -316,11 +308,3 @@ footer {
   border-top: 1px solid var(--rule);
 }
 
-/* === Print (CV) === */
-@media print {
-  .site-nav, footer, .cv-actions { display: none; }
-  body { font-size: 12px; }
-  .page { padding: 0; max-width: none; }
-  a { color: inherit; }
-  .cv h2 { margin-top: 20px; }
-}
